@@ -40,7 +40,7 @@ export default async function ProjectPage({ params }: PageProps) {
 
   return (
     <>
-      <div>Nav test</div>
+      
       <main className="px-6 pb-28 pt-32 md:px-10">
         <div className="mx-auto max-w-content">
           <Link
