@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { ticker } from "@/lib/ticker";
+import { usePrefersReducedMotion } from "@/lib/hooks";
 
 type AsciiFieldProps = {
   className?: string;
@@ -49,9 +51,10 @@ function rainValue(seedA: number, seedB: number, col: number, row: number, t: nu
 export function AsciiField({ className = "" }: AsciiFieldProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const reducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (reducedMotion) return;
 
     const container = containerRef.current;
     const canvas = canvasRef.current;
@@ -68,10 +71,6 @@ export function AsciiField({ className = "" }: AsciiFieldProps) {
     let colSeedA: Float32Array = new Float32Array(0);
     let colSeedB: Float32Array = new Float32Array(0);
     let skipMask: Uint8Array = new Uint8Array(0);
-    let rafId = 0;
-    let running = true;
-    let lastFrameTime = 0;
-    const frameInterval = 1000 / MAX_FPS;
     const cursor = { x: -9999, y: -9999 };
 
     function mixColor(t: number) {
@@ -177,14 +176,6 @@ export function AsciiField({ className = "" }: AsciiFieldProps) {
       }
     }
 
-    function loop(timeMs: number) {
-      if (!running) return;
-      rafId = requestAnimationFrame(loop);
-      if (timeMs - lastFrameTime < frameInterval) return;
-      lastFrameTime = timeMs;
-      draw(timeMs);
-    }
-
     function onPointerMove(e: PointerEvent) {
       const rect = container!.getBoundingClientRect();
       cursor.x = e.clientX - rect.left;
@@ -201,16 +192,15 @@ export function AsciiField({ className = "" }: AsciiFieldProps) {
     resize();
     container.addEventListener("pointermove", onPointerMove, { passive: true });
     container.addEventListener("pointerleave", onPointerLeave);
-    rafId = requestAnimationFrame(loop);
+    const unsubscribe = ticker.add(({ time }) => draw(time), { fps: MAX_FPS });
 
     return () => {
-      running = false;
-      cancelAnimationFrame(rafId);
+      unsubscribe();
       resizeObserver.disconnect();
       container.removeEventListener("pointermove", onPointerMove);
       container.removeEventListener("pointerleave", onPointerLeave);
     };
-  }, []);
+  }, [reducedMotion]);
 
   return (
     <div ref={containerRef} className={className} aria-hidden>

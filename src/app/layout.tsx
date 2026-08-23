@@ -3,6 +3,8 @@ import { Archivo } from "next/font/google";
 import "./globals.css";
 import { personal } from "@/data/personal";
 import { SpotifyPlayer } from "@/components/SpotifyPlayer";
+import { SmoothScroll } from "@/components/SmoothScroll";
+import { NoiseOverlay } from "@/components/NoiseOverlay";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -43,8 +45,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={archivo.variable}>
       <body className="font-sans antialiased">
+        <SmoothScroll />
         {children}
         <SpotifyPlayer />
+        <NoiseOverlay />
       </body>
     </html>
   );

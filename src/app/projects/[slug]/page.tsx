@@ -7,6 +7,9 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { projects } from "@/data/projects";
 import { personal } from "@/data/personal";
+import { RollingText } from "@/components/RollingTextButton";
+import { motion } from "framer-motion";
+
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -37,7 +40,7 @@ export default async function ProjectPage({ params }: PageProps) {
 
   return (
     <>
-      <Nav />
+      <div>Nav test</div>
       <main className="px-6 pb-28 pt-32 md:px-10">
         <div className="mx-auto max-w-content">
           <Link

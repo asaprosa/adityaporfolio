@@ -1,9 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { Placeholder } from "@/components/Placeholder";
 import { Tilt } from "@/components/Tilt";
+import { TextArrowButton } from "@/components/TextArrowButton";
+import { RollingText } from "@/components/RollingTextButton";
+import { motion } from "framer-motion";
 import { projects } from "@/data/projects";
 import { personal } from "@/data/personal";
 
@@ -17,15 +22,15 @@ export function Projects() {
             <br />
             Projects
           </h2>
-          <a
+          <TextArrowButton
+            as="a"
             href={personal.links.github}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-ink"
+            className="text-sm font-medium text-ink"
           >
             View all work
-            <ArrowUpRight size={15} />
-          </a>
+          </TextArrowButton>
         </Reveal>
 
         <div className="mt-14 grid gap-8 sm:grid-cols-2">
@@ -51,10 +56,14 @@ export function Projects() {
                       <Placeholder label="Screenshot" variant="tile" className="h-full w-full" />
                     )}
                     <div className="absolute inset-0 flex items-center justify-center bg-ink/0 opacity-0 transition-all duration-300 group-hover:bg-ink/50 group-hover:opacity-100">
-                      <span className="inline-flex translate-y-2 items-center gap-1.5 rounded-control bg-paper px-4 py-2 text-sm font-medium text-ink transition-transform duration-300 group-hover:translate-y-0">
-                        View project
+                      <motion.span 
+                        initial="initial"
+                        whileHover="hover"
+                        className="inline-flex translate-y-2 items-center gap-1.5 rounded-control bg-paper px-4 py-2 text-sm font-medium text-ink transition-transform duration-300 group-hover:translate-y-0"
+                      >
+                        <RollingText text="View project" />
                         <ArrowUpRight size={15} />
-                      </span>
+                      </motion.span>
                     </div>
                   </Tilt>
                   <div className="mt-4 flex items-start justify-between gap-3">
@@ -70,12 +79,14 @@ export function Projects() {
                   <p className="mt-3 text-sm leading-relaxed text-muted">{project.description}</p>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {project.tech.map((t) => (
-                      <span
+                      <motion.span
                         key={t}
-                        className="rounded-control border border-ink/15 px-2.5 py-1 text-xs text-ink"
+                        initial="initial"
+                        whileHover="hover"
+                        className="rounded-control border border-ink/15 px-2.5 py-1 text-xs text-ink cursor-default"
                       >
-                        {t}
-                      </span>
+                        <RollingText text={t} />
+                      </motion.span>
                     ))}
                   </div>
                 </Link>

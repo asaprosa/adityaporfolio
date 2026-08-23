@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { personal } from "@/data/personal";
+import { TextArrowButton } from "@/components/TextArrowButton";
 
 export function About() {
   return (
@@ -22,13 +23,13 @@ export function About() {
             I focus on building and scaling automated testing frameworks that hold up under real
             production traffic, not just demo conditions.
           </p>
-          <a
+          <TextArrowButton
+            as="a"
             href="#contact"
-            className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-ink underline decoration-ink/30 underline-offset-4 hover:decoration-ink"
+            className="mt-6 text-sm font-medium text-ink"
           >
             Get in touch
-            <ArrowUpRight size={15} />
-          </a>
+          </TextArrowButton>
         </Reveal>
       </div>
     </section>

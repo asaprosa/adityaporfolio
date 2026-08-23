@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, type ReactNode } from "react";
+import { ticker } from "@/lib/ticker";
+import { usePrefersReducedMotion } from "@/lib/hooks";
 
 export type HorizontalMarqueeProps<T> = {
   items: T[];
@@ -45,9 +47,10 @@ function Row<T>({
 }) {
   const trackRef = useRef<HTMLDivElement>(null);
   const loopMarkerRef = useRef<HTMLDivElement>(null);
+  const reducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (reducedMotion) return;
 
     const track = trackRef.current;
     const loopMarker = loopMarkerRef.current;
@@ -55,8 +58,6 @@ function Row<T>({
 
     let offset = 0;
     let velocityFactor = 1;
-    let rafId = 0;
-    let lastTime = 0;
     let loopDistance = loopMarker.offsetLeft;
 
     const resizeObserver = new ResizeObserver(() => {
@@ -64,29 +65,23 @@ function Row<T>({
     });
     resizeObserver.observe(track);
 
-    function tick(time: number) {
-      rafId = requestAnimationFrame(tick);
-      const dt = lastTime ? time - lastTime : 0;
-      lastTime = time;
-
+    const unsubscribe = ticker.add(({ deltaTime }) => {
       velocityFactor += (hoverState.target - velocityFactor) * VELOCITY_EASE;
 
       if (loopDistance > 0) {
         const pxPerMs = loopDistance / (speedSeconds * 1000);
-        offset += direction * pxPerMs * dt * velocityFactor;
+        offset += direction * pxPerMs * deltaTime * velocityFactor;
         offset = ((offset % loopDistance) + loopDistance) % loopDistance;
       }
 
       track!.style.transform = `translateX(${-offset}px)`;
-    }
-
-    rafId = requestAnimationFrame(tick);
+    });
 
     return () => {
-      cancelAnimationFrame(rafId);
+      unsubscribe();
       resizeObserver.disconnect();
     };
-  }, [direction, hoverState, speedSeconds]);
+  }, [direction, hoverState, speedSeconds, reducedMotion]);
 
   return (
     <div className="relative overflow-hidden">

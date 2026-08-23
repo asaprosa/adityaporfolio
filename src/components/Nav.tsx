@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { MoreHorizontal, X } from "lucide-react";
 import { personal } from "@/data/personal";
+import { RollingText } from "@/components/RollingTextButton";
 
 const sections = [
   { id: "top", label: "Home" },
@@ -55,13 +56,15 @@ export function Nav() {
             <ul className="flex flex-col">
               {sections.map((s) => (
                 <li key={s.id}>
-                  <a
+                  <motion.a
                     href={sectionHref(s.id)}
                     onClick={() => setOpen(false)}
                     className="block rounded-control px-4 py-2 text-sm text-paper/80 transition-colors hover:bg-paper/10 hover:text-paper"
+                    initial="initial"
+                    whileHover="hover"
                   >
-                    {s.label}
-                  </a>
+                    <RollingText text={s.label} />
+                  </motion.a>
                 </li>
               ))}
             </ul>

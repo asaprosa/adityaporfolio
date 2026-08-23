@@ -2,7 +2,7 @@ import { Nav } from "@/components/Nav";
 import { IntroSplash } from "@/components/IntroSplash";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
-import { InkReveal } from "@/components/InkReveal";
+import { ScrollColorText } from "@/components/ScrollColorText";
 import { Skills } from "@/components/Skills";
 import { Projects } from "@/components/Projects";
 import { Experience } from "@/components/Experience";
@@ -19,7 +19,7 @@ export default function Home() {
       <main className="relative">
         <Hero />
         <About />
-        <InkReveal text={personal.manifesto} leadWord={personal.manifestoLead} />
+        <ScrollColorText text={`${personal.manifestoLead} ${personal.manifesto}`} />
         <Skills />
         <Projects />
         <Experience />

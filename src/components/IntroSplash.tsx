@@ -3,6 +3,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Noto_Sans_Devanagari, Noto_Sans_JP } from "next/font/google";
+import { usePrefersReducedMotion } from "@/lib/hooks";
 
 const notoDevanagari = Noto_Sans_Devanagari({ subsets: ["devanagari"], weight: ["700"] });
 const notoJP = Noto_Sans_JP({ subsets: ["latin"], weight: ["700"] });
@@ -24,18 +25,18 @@ export function IntroSplash() {
   const [phase, setPhase] = useState<Phase>("pending");
   const [index, setIndex] = useState(0);
   const timers = useRef<number[]>([]);
+  const reducedMotion = usePrefersReducedMotion();
 
   // Runs before paint, so repeat-session visitors never see a flash of the splash.
   useLayoutEffect(() => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const seen = sessionStorage.getItem(SESSION_KEY);
-    if (reduced || seen) {
+    if (reducedMotion || seen) {
       setPhase("done");
       return;
     }
     sessionStorage.setItem(SESSION_KEY, "1");
     setPhase("greeting");
-  }, []);
+  }, [reducedMotion]);
 
   useEffect(() => {
     if (phase !== "greeting") return;

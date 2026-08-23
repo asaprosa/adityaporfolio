@@ -3,6 +3,8 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { personal } from "@/data/personal";
+import { ticker } from "@/lib/ticker";
+import { usePrefersReducedMotion } from "@/lib/hooks";
 
 const HERO_FILTER = { grayscale: 1, sepia: 0, contrast: 1.25 };
 const ABOUT_FILTER = { grayscale: 0, sepia: 1, contrast: 1.1 };
@@ -35,14 +37,13 @@ function docRect(el: Element): Rect {
 
 export function ProfilePhoto() {
   const wrapRef = useRef<HTMLDivElement>(null);
+  const reducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
     const wrap = wrapRef.current;
     const heroAnchor = document.getElementById("hero-photo-anchor");
     const aboutAnchor = document.getElementById("about-photo-anchor");
     if (!wrap || !heroAnchor || !aboutAnchor) return;
-
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     let heroRect: Rect = { top: 0, left: 0, width: 0, height: 0 };
     let aboutRect: Rect = { top: 0, left: 0, width: 0, height: 0 };
@@ -92,10 +93,7 @@ export function ProfilePhoto() {
       return () => window.removeEventListener("resize", onResize);
     }
 
-    let rafId = 0;
     function tick() {
-      rafId = requestAnimationFrame(tick);
-
       const range = Math.max(1, aboutDocTop - heroDocTop);
       const progress = Math.min(1, Math.max(0, (window.scrollY - heroDocTop) / range));
 
@@ -119,14 +117,14 @@ export function ProfilePhoto() {
     const resizeObserver = new ResizeObserver(measure);
     resizeObserver.observe(document.body);
 
-    rafId = requestAnimationFrame(tick);
+    const unsubscribe = ticker.add(tick);
 
     return () => {
-      cancelAnimationFrame(rafId);
+      unsubscribe();
       resizeObserver.disconnect();
       remeasureTimers.forEach(window.clearTimeout);
     };
-  }, []);
+  }, [reducedMotion]);
 
   return (
     <div

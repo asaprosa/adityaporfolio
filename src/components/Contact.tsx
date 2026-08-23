@@ -4,6 +4,7 @@ import { useState, type FormEvent } from "react";
 import { Github, Linkedin } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { personal } from "@/data/personal";
+import { RollingTextButton } from "@/components/RollingTextButton";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -118,13 +119,12 @@ export function Contact() {
                   placeholder="Tell me about your project"
                 />
               </div>
-              <button
+              <RollingTextButton
                 type="submit"
-                disabled={status === "loading"}
-                className="w-full rounded-control bg-paper py-3 text-sm font-medium text-ink transition-opacity hover:opacity-90 disabled:opacity-50"
-              >
-                {status === "loading" ? "Sending…" : "Submit"}
-              </button>
+                isLoading={status === "loading"}
+                text="Submit"
+                className="w-full rounded-control py-3 text-sm transition-opacity hover:opacity-90 disabled:opacity-50"
+              />
               {status === "success" && (
                 <p className="text-sm text-paper/80">Thanks — I&apos;ll get back to you soon.</p>
               )}
