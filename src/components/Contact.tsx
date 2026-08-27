@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { Github, Linkedin } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import { Reveal } from "@/components/Reveal";
 import { personal } from "@/data/personal";
 import { RollingTextButton } from "@/components/RollingTextButton";
@@ -56,24 +57,30 @@ export function Contact() {
             open.
           </p>
           <div className="mt-8 flex gap-3">
-            <a
+            <motion.a
               href={personal.links.github}
               target="_blank"
               rel="noreferrer"
               aria-label="GitHub"
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", visualDuration: 0.3, bounce: 0.15 }}
               className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 text-ink transition-colors hover:bg-ink hover:text-paper"
             >
               <Github size={17} />
-            </a>
-            <a
+            </motion.a>
+            <motion.a
               href={personal.links.linkedin}
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", visualDuration: 0.3, bounce: 0.15 }}
               className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 text-ink transition-colors hover:bg-ink hover:text-paper"
             >
               <Linkedin size={17} />
-            </a>
+            </motion.a>
           </div>
         </Reveal>
 
@@ -125,10 +132,32 @@ export function Contact() {
                 text="Submit"
                 className="w-full rounded-control py-3 text-sm transition-opacity hover:opacity-90 disabled:opacity-50"
               />
-              {status === "success" && (
-                <p className="text-sm text-paper/80">Thanks — I&apos;ll get back to you soon.</p>
-              )}
-              {status === "error" && <p className="text-sm text-red-300">{errorMessage}</p>}
+              <AnimatePresence mode="wait">
+                {status === "success" && (
+                  <motion.p
+                    key="success"
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ type: "spring", visualDuration: 0.3, bounce: 0.15 }}
+                    className="text-sm text-paper/80"
+                  >
+                    Thanks — I&apos;ll get back to you soon.
+                  </motion.p>
+                )}
+                {status === "error" && (
+                  <motion.p
+                    key="error"
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ type: "spring", visualDuration: 0.3, bounce: 0.15 }}
+                    className="text-sm text-red-300"
+                  >
+                    {errorMessage}
+                  </motion.p>
+                )}
+              </AnimatePresence>
             </form>
           </div>
         </Reveal>

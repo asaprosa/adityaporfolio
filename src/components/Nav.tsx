@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { MoreHorizontal, X } from "lucide-react";
 import { personal } from "@/data/personal";
 import { RollingText } from "@/components/RollingTextButton";
@@ -30,18 +30,27 @@ export function Nav() {
       className="fixed inset-x-0 top-6 z-50 flex flex-col items-center"
     >
       <div className="grain-surface flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 shadow-lg shadow-ink/10">
-        <a href={sectionHref("top")} className="text-sm font-semibold text-paper">
+        <motion.a
+          href={sectionHref("top")}
+          className="text-sm font-semibold text-paper"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", visualDuration: 0.3, bounce: 0.15 }}
+        >
           {personal.name.split(" ")[0]}
-        </a>
-        <button
+        </motion.a>
+        <motion.button
           type="button"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="flex h-7 w-7 items-center justify-center rounded-full bg-paper text-ink transition-transform hover:scale-105"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", visualDuration: 0.3, bounce: 0.15 }}
+          className="flex h-7 w-7 items-center justify-center rounded-full bg-paper text-ink"
         >
           {open ? <X size={15} /> : <MoreHorizontal size={15} />}
-        </button>
+        </motion.button>
       </div>
 
       <AnimatePresence>
@@ -62,6 +71,7 @@ export function Nav() {
                     className="block rounded-control px-4 py-2 text-sm text-paper/80 transition-colors hover:bg-paper/10 hover:text-paper"
                     initial="initial"
                     whileHover="hover"
+                    whileTap={{ scale: 0.98 }}
                   >
                     <RollingText text={s.label} />
                   </motion.a>

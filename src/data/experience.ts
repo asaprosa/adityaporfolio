@@ -16,7 +16,7 @@ export const experience: ExperienceEntry[] = [
       "Designed, developed, and executed detailed test plans, test cases, and test scenarios for web applications using manual and automation testing techniques.",
       "Utilized Postman for API testing, ensuring data integrity and validation.",
       "Collaborated closely with developers, product managers, and stakeholders to ensure quality deliverables, following Agile/Scrum methodologies.",
-      "Orchestrated QA release sign-offs for 7–8 rapid sprint builds per cycle, delivering detailed defect reports and readiness metrics.",
+      "Orchestrated QA release sign-offs across an average of 6+ builds per release cycle, delivering detailed defect reports and readiness metrics.",
     ],
   },
   {

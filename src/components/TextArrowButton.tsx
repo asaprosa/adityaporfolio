@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { ReactNode } from "react";
 import { RollingText } from "@/components/RollingTextButton";
@@ -69,6 +69,7 @@ export function TextArrowButton({ children, className = "", onClick, as = "butto
         className={containerClass}
         initial="initial"
         whileHover="hover"
+        whileTap={{ scale: 0.98 }}
       >
         {content}
       </motion.a>

@@ -1,18 +1,18 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "motion/react";
 import { personal } from "@/data/personal";
 import { SparkleIcon, BoltIcon } from "@/components/DecorativeIcons";
 import { AsciiField } from "@/components/AsciiField";
 
-const container = {
+const container: Variants = {
   hidden: {},
   show: {
     transition: { staggerChildren: 0.12, delayChildren: 0.15 },
   },
 };
 
-const item = {
+const item: Variants = {
   hidden: { opacity: 0, y: 24 },
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
 };

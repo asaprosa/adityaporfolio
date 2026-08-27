@@ -8,9 +8,11 @@ import { Placeholder } from "@/components/Placeholder";
 import { Tilt } from "@/components/Tilt";
 import { TextArrowButton } from "@/components/TextArrowButton";
 import { RollingText } from "@/components/RollingTextButton";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { projects } from "@/data/projects";
 import { personal } from "@/data/personal";
+
+const MotionLink = motion.create(Link);
 
 export function Projects() {
   return (
@@ -38,11 +40,17 @@ export function Projects() {
             const cover = project.images[0];
             return (
               <Reveal key={project.slug} delay={i * 0.1}>
-                <Link href={`/projects/${project.slug}`} className="group block">
+                <MotionLink
+                  href={`/projects/${project.slug}`}
+                  className="group block"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: "spring", visualDuration: 0.3, bounce: 0.15 }}
+                >
                   <Tilt
                     rotationFactor={6}
                     springOptions={{ stiffness: 200, damping: 22 }}
-                    className="relative aspect-[4/3] w-full overflow-hidden rounded-card"
+                    className="relative aspect-[16/9] w-full overflow-hidden rounded-card"
                   >
                     {cover ? (
                       <Image
@@ -89,7 +97,7 @@ export function Projects() {
                       </motion.span>
                     ))}
                   </div>
-                </Link>
+                </MotionLink>
               </Reveal>
             );
           })}

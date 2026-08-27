@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, HTMLMotionProps } from "framer-motion";
+import { motion, HTMLMotionProps } from "motion/react";
 import { Loader2 } from "lucide-react";
 
 interface RollingTextButtonProps extends HTMLMotionProps<"button"> {
@@ -64,6 +64,8 @@ export function RollingTextButton({ text, isLoading = false, className = "", ...
       disabled={isLoading || props.disabled}
       initial="initial"
       whileHover="hover"
+      whileTap={{ scale: 0.98 }}
+      transition={{ type: "spring", visualDuration: 0.3, bounce: 0.15 }}
       className={`relative flex w-fit items-center justify-center overflow-hidden rounded-full bg-ink px-6 py-3 font-medium text-paper dark:bg-paper dark:text-ink ${className}`}
       {...props}
     >

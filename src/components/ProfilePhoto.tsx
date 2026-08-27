@@ -6,8 +6,10 @@ import { personal } from "@/data/personal";
 import { ticker } from "@/lib/ticker";
 import { usePrefersReducedMotion } from "@/lib/hooks";
 
-const HERO_FILTER = { grayscale: 1, sepia: 0, contrast: 1.25 };
-const ABOUT_FILTER = { grayscale: 0, sepia: 1, contrast: 1.1 };
+// Grayscale is the only animated filter — the end state must be the photo's true,
+// unfiltered colors, not a sepia/contrast-enhanced version of it.
+const HERO_FILTER = { grayscale: 1 };
+const ABOUT_FILTER = { grayscale: 0 };
 
 // Genuine 3D card-flip: rotates on the Y axis and turns fully edge-on (90deg) at the midpoint,
 // then unflips back to facing the viewer — like a flashcard, not a flat spinning coin. Never
@@ -77,7 +79,7 @@ export function ProfilePhoto() {
       wrap!.style.left = `${rect.left}px`;
       wrap!.style.width = `${rect.width}px`;
       wrap!.style.height = `${rect.height}px`;
-      wrap!.style.filter = `grayscale(${filter.grayscale}) sepia(${filter.sepia}) contrast(${filter.contrast})`;
+      wrap!.style.filter = `grayscale(${filter.grayscale})`;
       wrap!.style.transform = `perspective(${FLIP_PERSPECTIVE_PX}px) rotateY(${rotateDeg}deg)`;
     }
 
@@ -105,8 +107,6 @@ export function ProfilePhoto() {
       };
       const filter = {
         grayscale: lerp(HERO_FILTER.grayscale, ABOUT_FILTER.grayscale, progress),
-        sepia: lerp(HERO_FILTER.sepia, ABOUT_FILTER.sepia, progress),
-        contrast: lerp(HERO_FILTER.contrast, ABOUT_FILTER.contrast, progress),
       };
       const rotateDeg = FLIP_PEAK_DEG * Math.sin(progress * Math.PI);
       applyStyle(rect, filter, rotateDeg);

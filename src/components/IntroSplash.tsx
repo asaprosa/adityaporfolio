@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { Noto_Sans_Devanagari, Noto_Sans_JP } from "next/font/google";
 import { usePrefersReducedMotion } from "@/lib/hooks";
 

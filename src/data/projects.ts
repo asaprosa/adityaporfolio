@@ -20,6 +20,34 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "gold-silver-loan-system",
+    title: "Gold & Silver Loan Management System",
+    subtitle: "Freelance project",
+    description:
+      "A staff-facing web app for a pawn-loan (gold/silver) shop, plus a self-service portal for the shop's B2B wholesale customers (Vyaparis) — covering the full loan lifecycle: pledge, release, renewal, top-up, and partial repayment, with two fully isolated authentication systems for staff vs. self-service customers.",
+    tech: ["Next.js 16", "TypeScript", "React 19", "Prisma", "PostgreSQL", "Tailwind CSS"],
+    highlights: [
+      "Architected a multi-transaction-type loan engine (pledge, release, renewal, top-up, partial-repayment) with a 3-mode interest calculator (slab/prorata/manual), validated against 799 real historical releases with zero discrepancies via a dedicated replay script.",
+      "Built two fully isolated auth systems: NextAuth v5 (JWT) for staff with OWNER/ASSISTANT roles, and a separate custom HMAC-SHA256 signed-cookie session for the Vyapari self-service portal — no shared session concept between the two.",
+      "Implemented dual QR/HID scanning input (Bluetooth scanner and phone-camera decode) feeding one shared per-workflow scan handler, used across single-item release, bulk release, and daily Vyapari settlement (Hishob).",
+      "Backed by 153 unit tests (Vitest, 12 files) chaining real production interest/settlement functions, plus Playwright E2E coverage.",
+    ],
+    images: [
+      {
+        src: "/images/projects/gold-silver-dashboard.png",
+        alt: "Gold & Silver Loan Management System — staff dashboard",
+      },
+      {
+        src: "/images/projects/gold-silver-vyapari-hishob.png",
+        alt: "Gold & Silver Loan Management System — Vyapari daily Hishob settlement",
+      },
+      {
+        src: "/images/projects/gold-silver-melting-register.png",
+        alt: "Gold & Silver Loan Management System — melting/warning register",
+      },
+    ],
+  },
+  {
     slug: "qa-automation-engine",
     title: "Multi-Model AI & Risk-Scored QA Automation Engine",
     subtitle: "Internal QA tooling",
@@ -27,7 +55,7 @@ export const projects: Project[] = [
       "A risk-prioritization engine and serverless automation suite that cuts pre-test planning overhead by orchestrating multiple LLMs with resilient fallbacks.",
     tech: ["Node.js", "Vercel", "Playwright", "Groq", "Claude", "Gemini"],
     highlights: [
-      "Architected a 7-factor usage-calibrated risk-scoring algorithm with dependency-graph traversal across 41 SaaS modules, backed by a 122-case node:test suite that cut pre-test planning overhead by 85%.",
+      "Architected a 7-factor usage-calibrated risk-scoring algorithm with dependency-graph traversal across 41 SaaS modules, backed by a 122-case node:test suite that is estimated to cut manual test-planning prep from 30–45 minutes to under 5 minutes per feature.",
       "Integrated Gemini, Claude, and Groq (Llama 3.3 70B) with exponential backoff, token-budget tuning, and prompt-calibration loops for multi-LLM resilience.",
       "Developed a Telegram-to-Trello automation webhook on Vercel handling custom Unicode/bidi text parsing.",
     ],

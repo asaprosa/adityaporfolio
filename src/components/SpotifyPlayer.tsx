@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { Play, Pause } from "lucide-react";
 
 // Extracted from the playlist share URL: open.spotify.com/playlist/<id>?...
@@ -115,15 +115,18 @@ export function SpotifyPlayer() {
         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
       />
       <div className="fixed bottom-6 right-6 z-50">
-        <button
+        <motion.button
           type="button"
           onClick={() => controllerRef.current?.togglePlay()}
           disabled={!ready}
           aria-label={isPlaying ? "Pause background music" : "Play background music"}
-          className="grain-surface flex h-12 w-12 items-center justify-center rounded-full bg-ink text-paper shadow-lg shadow-ink/10 transition-transform hover:scale-105 disabled:opacity-40 disabled:hover:scale-100"
+          whileHover={ready ? { scale: 1.05 } : undefined}
+          whileTap={ready ? { scale: 0.95 } : undefined}
+          transition={{ type: "spring", visualDuration: 0.3, bounce: 0.15 }}
+          className="grain-surface flex h-12 w-12 items-center justify-center rounded-full bg-ink text-paper shadow-lg shadow-ink/10 disabled:opacity-40"
         >
           {isPlaying ? <Pause size={17} /> : <Play size={17} className="ml-0.5" />}
-        </button>
+        </motion.button>
       </div>
     </>
   );

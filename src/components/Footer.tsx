@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { Github, Linkedin } from "lucide-react";
 import { personal } from "@/data/personal";
 import { RollingText } from "@/components/RollingTextButton";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 const quickLinks = [
   { id: "top", label: "Home" },
@@ -62,6 +62,7 @@ export function Footer() {
                 className="rounded-control bg-paper/10 px-4 py-2 text-sm text-paper transition-colors hover:bg-paper/20 group"
                 initial="initial"
                 whileHover="hover"
+                whileTap={{ scale: 0.98 }}
               >
                 <span className="inline-block transition-transform group-hover:scale-105">
                   <RollingText text={link.label} />
@@ -78,22 +79,26 @@ export function Footer() {
             className="mt-4 inline-block text-sm text-paper hover:underline group"
             initial="initial"
             whileHover="hover"
+            whileTap={{ scale: 0.98 }}
           >
             <RollingText text={personal.email} />
           </motion.a>
 
           <div className="mt-5 flex gap-3">
             {socialLinks.map(({ label, href, Icon }) => (
-              <a
+              <motion.a
                 key={label}
                 href={href}
                 target="_blank"
                 rel="noreferrer"
                 aria-label={label}
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", visualDuration: 0.3, bounce: 0.15 }}
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-paper/15 text-paper transition-colors hover:bg-paper hover:text-ink"
               >
                 <Icon size={15} />
-              </a>
+              </motion.a>
             ))}
           </div>
 
