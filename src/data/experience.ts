@@ -8,27 +8,20 @@ export type ExperienceEntry = {
 
 export const experience: ExperienceEntry[] = [
   {
-    title: "Automation Test Engineer",
+    title: "Automation Test Engineer | Software Engineer Trainee",
     company: "Iesoft Technologies",
     location: "Remote",
-    period: "May 2025 – Present",
+    period: "Oct 2024 – Present",
     bullets: [
-      "Designed, developed, and executed detailed test plans, test cases, and test scenarios for web applications using manual and automation testing techniques.",
-      "Utilized Postman for API testing, ensuring data integrity and validation.",
-      "Collaborated closely with developers, product managers, and stakeholders to ensure quality deliverables, following Agile/Scrum methodologies.",
-      "Orchestrated QA release sign-offs across an average of 6+ builds per release cycle, delivering detailed defect reports and readiness metrics.",
-    ],
-  },
-  {
-    title: "Software Engineer Trainee – Test Automation",
-    company: "Iesoft Technologies",
-    location: "Remote",
-    period: "Oct 2024 – May 2025",
-    bullets: [
-      "Systematically grew the regression catalog from 300 to 700+ automated E2E test cases, expanding functional coverage and ensuring adherence to STLC processes.",
-      "Identified, logged, and tracked defects, performing functional, regression, and integration testing.",
-      "Constructed and maintained automated regression pipelines using GitHub Actions CI/CD systems.",
-      "Analyzed developer source code to trace regression failures, applying targeted fixes to ensure product stability.",
+      "Executed E2E manual and automated test plans across a 41-module responsive SaaS application, identifying complex edge cases.",
+      "Performed initial Root Cause Analysis (RCA) on defect submissions using Chrome DevTools (Network/Console tabs) and frontend source code tracing.",
+      "Engineered custom SQL queries with Trino for database-level verification, data integrity, and schema conformance checks.",
+      "Migrating the team's Selenium/Java regression suite to Playwright, leveraging its native AI agent workflow (Planner/Generator/Healer) to auto-generate test specs and self-heal locators. Built ~13 business-outcome test units across payment, patient, pharmacy, appointment, and authentication workflows via Playwright CLI plus MCP, asserting financial invariants and data persistence rather than surface-level UI checks, with migration continuing module by module.",
+      "Coordinated QA release sign-off across an average of 6+ builds per release cycle, documenting defect reports and reproduction steps.",
+      "Configured scheduled automated test execution via GitHub Actions CI/CD, implementing runner cleanup scripts to terminate orphaned Chrome/driver processes and maintain pipeline reliability.",
+      "Executed REST API validation using Postman and security testing with Burp Suite.",
+      "Traced defects into frontend source code and implemented targeted fixes in React/Angular components.",
+      "Built an internal AI-assisted QA workflow: feature intake via AI chat, automated structured Trello card generation, and automated multi-audience release summaries generated from the release board.",
     ],
   },
 ];

@@ -79,7 +79,7 @@ export const projects: Project[] = [
     title: "ATS Resume Tailor",
     subtitle: "Browser-only resume tailoring app",
     description:
-      "A bring-your-own-key app that tailors a resume to a job description without inventing experience: it extracts what the JD actually requires, scores the resume against it, and generates a keyword-optimized, ATS-friendly LaTeX resume — plus a cover letter, interview prep, and a LinkedIn About, all grounded only in what you actually provide.",
+      "A bring-your-own-key app that tailors a resume to a job description: it extracts what the JD actually requires, scores the resume against it, and generates a keyword-optimized, ATS-friendly LaTeX resume — plus a cover letter, interview prep, and a LinkedIn About. A deterministic verification pass flags any generated metric that isn't traceable back to the source resume.",
     tech: ["React", "Vite", "JavaScript", "Kimi", "Gemini", "Groq", "NVIDIA NIM"],
     highlights: [
       "JD analysis extracts required/preferred skills, responsibilities, and ATS keywords from a pasted job description. Resume input supports PDF/DOCX/TXT upload — parsed entirely client-side via pdf.js and mammoth, never uploaded anywhere — or pasting directly.",

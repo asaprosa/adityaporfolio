@@ -14,17 +14,20 @@ const archivo = Archivo({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://adityaaghodkedev.vercel.app"),
   title: `${personal.name} — ${personal.role}`,
   description: personal.summary,
   openGraph: {
     title: `${personal.name} — ${personal.role}`,
     description: personal.tagline,
     type: "website",
+    images: ["/images/profile.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: `${personal.name} — ${personal.role}`,
     description: personal.tagline,
+    images: ["/images/profile.jpg"],
   },
   icons: {
     icon: [
