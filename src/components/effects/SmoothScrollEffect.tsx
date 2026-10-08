@@ -13,6 +13,12 @@ const SHOW_BACK_TO_TOP_AFTER = 600;
 // The live Lenis instance (or null when native scroll is in use), so the button can reuse it.
 let lenis: Lenis | null = null;
 
+/** Scroll to a page offset using Lenis when it is running, otherwise native smooth scrolling. */
+export function smoothScrollTo(y: number) {
+  if (lenis) lenis.scrollTo(y, { duration: 0.9, easing: easeOutCubic });
+  else window.scrollTo({ top: y, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+}
+
 /**
  * smoothScroll effect.
  * - Lenis with gentle cubic easing, on screens 768px and up, without reduced motion.
