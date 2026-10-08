@@ -24,7 +24,7 @@ const socialLinks = [
 function AnimatedHeading({ text }: { text: string }) {
   const words = text.split(" ");
   return (
-    <h2 className="max-w-md text-4xl font-medium leading-tight tracking-tightest2 text-paper sm:text-5xl">
+    <h2 className="max-w-md text-4xl font-semibold leading-tight tracking-tightest2 text-paper sm:text-5xl">
       {words.map((word, i) => (
         <motion.span
           key={`${word}-${i}`}
@@ -116,7 +116,7 @@ export function Footer() {
         className="pointer-events-none absolute bottom-0 left-1/2 w-[94vw] -translate-x-1/2 translate-y-1/2"
       >
         <motion.p
-          className="select-none whitespace-nowrap text-center font-sans text-[16vw] font-medium leading-none tracking-tighter text-neutral-900"
+          className="select-none whitespace-nowrap text-center font-sans text-[16vw] font-bold leading-none tracking-tighter text-neutral-900"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}

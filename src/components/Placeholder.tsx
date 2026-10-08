@@ -21,7 +21,7 @@ export function Placeholder({ label, className = "", variant = "photo" }: Placeh
         }}
       />
       <span
-        className={`relative font-sans font-medium uppercase tracking-wide text-paper/50 ${
+        className={`relative font-sans font-semibold uppercase tracking-wide text-paper/50 ${
           variant === "photo" ? "text-xs" : "text-sm"
         }`}
       >

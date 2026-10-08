@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { Work_Sans } from "next/font/google";
+import { Archivo } from "next/font/google";
 import "./globals.css";
 import { personal } from "@/data/personal";
 import { SpotifyPlayer } from "@/components/SpotifyPlayer";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { NoiseOverlay } from "@/components/NoiseOverlay";
 
-const workSans = Work_Sans({
+const archivo = Archivo({
   subsets: ["latin"],
-  variable: "--font-work-sans",
-  weight: ["400", "500"],
+  variable: "--font-archivo",
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -46,7 +46,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={workSans.variable}>
+    <html lang="en" className={archivo.variable}>
       <body className="font-sans antialiased">
         <SmoothScroll />
         {children}

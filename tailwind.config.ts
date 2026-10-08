@@ -16,7 +16,7 @@ const config: Config = {
         hoverGrey: "#5E5E5E",
       },
       fontFamily: {
-        sans: ["var(--font-work-sans)", "system-ui", "sans-serif"],
+        sans: ["var(--font-archivo)", "system-ui", "sans-serif"],
       },
       borderRadius: {
         control: "8px",

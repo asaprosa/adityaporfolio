@@ -85,7 +85,7 @@ export function IntroSplash() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -12 }}
           transition={{ duration: 0.12, ease: [0.22, 1, 0.36, 1] }}
-          className={`grain-text text-6xl font-medium sm:text-7xl ${GREETINGS[index].font}`}
+          className={`grain-text text-6xl font-bold sm:text-7xl ${GREETINGS[index].font}`}
         >
           {GREETINGS[index].text}
         </motion.span>

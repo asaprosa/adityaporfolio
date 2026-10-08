@@ -35,7 +35,7 @@ export function Hero() {
       >
         <motion.h1
           variants={item}
-          className="grain-text relative select-none break-words text-center font-sans text-[12.5vw] font-medium leading-[0.88] tracking-tightest2 sm:text-[13vw] lg:text-[10vw]"
+          className="grain-text relative select-none break-words text-center font-sans text-[12.5vw] font-extrabold leading-[0.88] tracking-tightest2 sm:text-[13vw] lg:text-[10vw]"
         >
           <motion.span
             animate={{ rotate: [0, -8, 8, 0], scale: [1, 1.08, 1] }}
@@ -68,7 +68,7 @@ export function Hero() {
         animate="show"
         className="relative z-10 mx-auto mt-10 flex w-full max-w-content items-end justify-between px-2 text-xs text-muted sm:text-sm"
       >
-        <span className="grain-text font-sans text-2xl font-medium sm:text-3xl">©{year}</span>
+        <span className="grain-text font-sans text-2xl font-extrabold sm:text-3xl">©{year}</span>
         <span className="t-label">/{personal.availability.toUpperCase()}</span>
       </motion.div>
     </section>
