@@ -9,6 +9,7 @@ import { personal } from "@/data/personal";
 import { ProjectGallery } from "@/components/ProjectGallery";
 import { TechStackTags } from "@/components/TechStackTags";
 import { MotionCta } from "@/components/MotionCta";
+import { ProjectPager, type PagerProject } from "@/components/ProjectPager";
 
 
 type PageProps = {
@@ -48,6 +49,17 @@ export default async function ProjectPage({ params }: PageProps) {
 
   const isInternalLink = project.link?.startsWith("/");
   const [heroImage, ...galleryImages] = project.images;
+
+  // Order follows the homepage grid (the projects array) and wraps at both ends.
+  const index = projects.findIndex((p) => p.slug === slug);
+  const toPager = (p: (typeof projects)[number]): PagerProject => ({
+    slug: p.slug,
+    title: p.title,
+    image: p.images[0]?.src,
+  });
+  const hasOthers = projects.length > 1;
+  const prev = hasOthers ? toPager(projects[(index - 1 + projects.length) % projects.length]) : undefined;
+  const next = hasOthers ? toPager(projects[(index + 1) % projects.length]) : undefined;
 
   return (
     <>
@@ -154,6 +166,8 @@ export default async function ProjectPage({ params }: PageProps) {
               )}
             </div>
           </div>
+
+          <ProjectPager prev={prev} next={next} />
         </div>
       </main>
       <Footer />
