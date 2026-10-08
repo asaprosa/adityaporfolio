@@ -110,8 +110,8 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "ninhon",
-    title: "Ninhon: Japanese Study App",
+    slug: "nihon",
+    title: "Nihon: Japanese Study App",
     subtitle: "Personal project",
     description:
       "A spaced-repetition Japanese study app structured around Minna no Nihongo Shokyu I, with drills, tests, and a recommender that routes practice to the weakest area.",
@@ -128,8 +128,30 @@ export const projects: Project[] = [
     accessNote: "Private project. Live demo available on request (passcode-protected).",
     accessEmail: "adityaaghodke2@gmail.com",
     images: [
-      { src: "/images/projects/ninhon-1.png", alt: "Ninhon Today screen with day streak, cards due, a daily 10 set, a review button and the recommended drill for the weakest area" },
-      { src: "/images/projects/ninhon-3.png", alt: "Ninhon Match drill pairing Japanese words with their English meanings against a timer" },
+      { src: "/images/projects/nihon-flashcards.png", alt: "Nihon flashcards screen with lesson filters, sound and reading toggles, and a vocabulary card waiting to be revealed" },
+      { src: "/images/projects/nihon-match.png", alt: "Nihon Match drill pairing Japanese words with their English meanings against a timer" },
+    ],
+  },
+  {
+    slug: "ornament-system",
+    title: "Ornament System: Jewellery Shop Management Platform",
+    subtitle: "Family business project",
+    description:
+      "A full-stack inventory, sales and invoicing system built to replace a legacy Visual Basic 6 desktop application for a family-run jewellery shop, including migrating its legacy Access database to PostgreSQL.",
+    tech: ["Next.js", "React", "TypeScript", "PostgreSQL", "Prisma", "Tailwind CSS", "NextAuth", "Vitest", "Playwright"],
+    highlights: [
+      "Tracks inventory with generated barcodes and grouped stock.",
+      "Runs the full sale flow (item selection, gold-rate-based pricing, GST, draft and completed states) with exact decimal money math.",
+      "Prints bilingual (Marathi and English) invoices, and tag sheets laid out for 70 x 136 mm labels (physical print calibration pending).",
+      "Keeps staff login (NextAuth) separate from a public customer registration flow with its own signed session (SMS delivery not yet integrated).",
+      "Uses row-level locking on payments, so two simultaneous submissions cannot overpay an invoice.",
+      "Tests: 276 Vitest tests and 51 Playwright end-to-end tests. In the latest run all Vitest tests passed and 50 of 51 Playwright tests passed (one known flaky selector).",
+    ],
+    accessNote: "Private project. Walkthrough available on request.",
+    accessEmail: "adityaaghodke2@gmail.com",
+    images: [
+      { src: "/images/projects/ornament-invoice.png", alt: "Ornament System printed tax invoice with line items, GST breakdown and payment status" },
+      { src: "/images/projects/ornament-sales-book.png", alt: "Ornament System sales book listing invoices with payment and status badges" },
     ],
   },
 ];
