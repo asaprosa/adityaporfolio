@@ -11,6 +11,8 @@ import { RollingText } from "@/components/RollingTextButton";
 import { motion } from "motion/react";
 import { projects } from "@/data/projects";
 import { personal } from "@/data/personal";
+import { CinemaPanels } from "@/components/effects/CinemaEffect";
+import { effects } from "@/config/effects";
 
 const MotionLink = motion.create(Link);
 
@@ -35,7 +37,10 @@ export function Projects() {
           </TextArrowButton>
         </Reveal>
 
-        <div className="mt-14 grid gap-8 sm:grid-cols-2">
+        {effects.cinema && <CinemaPanels />}
+
+        {/* Stacked cards: the whole grid normally, and under 768px when the cinema panels are on. */}
+        <div className={`mt-14 grid gap-8 sm:grid-cols-2 ${effects.cinema ? "md:hidden" : ""}`}>
           {projects.map((project, i) => {
             const cover = project.images[0];
             return (
