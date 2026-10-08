@@ -25,7 +25,7 @@ export default function ResumeBuilderPage() {
             Back to project
           </Link>
 
-          <h1 className="grain-text mt-6 text-5xl font-semibold tracking-tightest2 sm:text-6xl">
+          <h1 className="grain-text mt-6 text-5xl font-medium tracking-tightest2 sm:text-6xl">
             Resume Builder
             <br />
             lite demo

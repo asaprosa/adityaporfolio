@@ -13,9 +13,10 @@ const config: Config = {
         muted: "#6b6b6b",
         mutedInk: "#a8a8a8",
         line: "#111111",
+        hoverGrey: "#5E5E5E",
       },
       fontFamily: {
-        sans: ["var(--font-archivo)", "system-ui", "sans-serif"],
+        sans: ["var(--font-work-sans)", "system-ui", "sans-serif"],
       },
       borderRadius: {
         control: "8px",

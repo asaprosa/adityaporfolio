@@ -32,7 +32,7 @@ export function Nav() {
       <div className="grain-surface flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 shadow-lg shadow-ink/10">
         <motion.a
           href={sectionHref("top")}
-          className="text-sm font-semibold text-paper"
+          className="t-nav text-paper"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", visualDuration: 0.3, bounce: 0.15 }}
@@ -68,7 +68,7 @@ export function Nav() {
                   <motion.a
                     href={sectionHref(s.id)}
                     onClick={() => setOpen(false)}
-                    className="block rounded-control px-4 py-2 text-sm text-paper/80 transition-colors hover:bg-paper/10 hover:text-paper"
+                    className="t-nav block rounded-control px-4 py-2 text-paper/80 transition-colors hover:bg-paper/10 hover:text-paper"
                     initial="initial"
                     whileHover="hover"
                     whileTap={{ scale: 0.98 }}

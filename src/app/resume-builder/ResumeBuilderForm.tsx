@@ -152,7 +152,7 @@ export function ResumeBuilderForm() {
           <div className="space-y-8">
             <div>
               <p className="text-sm text-paper/50">ATS compatibility score</p>
-              <p className="mt-1 text-5xl font-semibold text-paper">{result.atsScore}<span className="text-xl text-paper/50">/100</span></p>
+              <p className="mt-1 text-5xl font-medium text-paper">{result.atsScore}<span className="text-xl text-paper/50">/100</span></p>
             </div>
 
             {result.missingKeywords.length > 0 && (

@@ -24,7 +24,7 @@ const socialLinks = [
 function AnimatedHeading({ text }: { text: string }) {
   const words = text.split(" ");
   return (
-    <h2 className="max-w-md text-4xl font-semibold leading-tight tracking-tightest2 text-paper sm:text-5xl">
+    <h2 className="max-w-md text-4xl font-medium leading-tight tracking-tightest2 text-paper sm:text-5xl">
       {words.map((word, i) => (
         <motion.span
           key={`${word}-${i}`}
@@ -53,13 +53,13 @@ export function Footer() {
         <AnimatedHeading text={personal.footerStatement} />
 
         <div>
-          <p className="text-sm text-paper/50">/Quick links</p>
+          <p className="t-footer text-paper/50">/Quick links</p>
           <div className="mt-4 flex flex-wrap gap-2">
             {quickLinks.map((link) => (
               <motion.a
                 key={link.id}
                 href={sectionHref(link.id)}
-                className="rounded-control bg-paper/10 px-4 py-2 text-sm text-paper transition-colors hover:bg-paper/20 group"
+                className="t-footer-link rounded-control bg-paper/10 px-4 py-2 text-paper transition-colors hover:bg-paper/20 group"
                 initial="initial"
                 whileHover="hover"
                 whileTap={{ scale: 0.98 }}
@@ -73,10 +73,10 @@ export function Footer() {
         </div>
 
         <div>
-          <p className="text-sm text-paper/50">/Contact</p>
+          <p className="t-footer text-paper/50">/Contact</p>
           <motion.a
             href={`mailto:${personal.email}`}
-            className="mt-4 inline-block text-sm text-paper hover:underline group"
+            className="t-footer-link mt-4 inline-block text-paper hover:underline group"
             initial="initial"
             whileHover="hover"
             whileTap={{ scale: 0.98 }}
@@ -102,7 +102,7 @@ export function Footer() {
             ))}
           </div>
 
-          <p className="mt-6 text-xs text-paper/40">
+          <p className="t-footer mt-6 text-paper/40">
             © {new Date().getFullYear()} {personal.name}. All rights reserved.
           </p>
         </div>
@@ -116,7 +116,7 @@ export function Footer() {
         className="pointer-events-none absolute bottom-0 left-1/2 w-[94vw] -translate-x-1/2 translate-y-1/2"
       >
         <motion.p
-          className="select-none whitespace-nowrap text-center font-sans text-[16vw] font-bold leading-none tracking-tighter text-neutral-900"
+          className="select-none whitespace-nowrap text-center font-sans text-[16vw] font-medium leading-none tracking-tighter text-neutral-900"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
