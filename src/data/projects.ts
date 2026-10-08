@@ -128,9 +128,8 @@ export const projects: Project[] = [
     accessNote: "Private project. Live demo available on request (passcode-protected).",
     accessEmail: "adityaaghodke2@gmail.com",
     images: [
-      { src: "/images/projects/ninhon-1.png", alt: "Ninhon Japanese study app, screen 1" },
-      { src: "/images/projects/ninhon-2.png", alt: "Ninhon Japanese study app, screen 2" },
-      { src: "/images/projects/ninhon-3.png", alt: "Ninhon Japanese study app, screen 3" },
+      { src: "/images/projects/ninhon-1.png", alt: "Ninhon Today screen with day streak, cards due, a daily 10 set, a review button and the recommended drill for the weakest area" },
+      { src: "/images/projects/ninhon-3.png", alt: "Ninhon Match drill pairing Japanese words with their English meanings against a timer" },
     ],
   },
 ];
