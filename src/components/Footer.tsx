@@ -5,6 +5,8 @@ import { Github, Linkedin } from "lucide-react";
 import { personal } from "@/data/personal";
 import { RollingText } from "@/components/RollingTextButton";
 import { motion } from "motion/react";
+import { TickerLinks } from "@/components/effects/TickerEffect";
+import { effects } from "@/config/effects";
 
 const quickLinks = [
   { id: "top", label: "Home" },
@@ -54,6 +56,9 @@ export function Footer() {
 
         <div>
           <p className="text-sm text-paper/50">/Quick links</p>
+          {effects.ticker ? (
+            <TickerLinks links={quickLinks.map((link) => ({ label: link.label, href: sectionHref(link.id) }))} />
+          ) : (
           <div className="mt-4 flex flex-wrap gap-2">
             {quickLinks.map((link) => (
               <motion.a
@@ -70,6 +75,7 @@ export function Footer() {
               </motion.a>
             ))}
           </div>
+          )}
         </div>
 
         <div>
