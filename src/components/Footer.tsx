@@ -53,13 +53,13 @@ export function Footer() {
         <AnimatedHeading text={personal.footerStatement} />
 
         <div>
-          <p className="t-footer text-paper/50">/Quick links</p>
+          <p className="text-sm text-paper/50">/Quick links</p>
           <div className="mt-4 flex flex-wrap gap-2">
             {quickLinks.map((link) => (
               <motion.a
                 key={link.id}
                 href={sectionHref(link.id)}
-                className="t-footer-link rounded-control bg-paper/10 px-4 py-2 text-paper transition-colors hover:bg-paper/20 group"
+                className="rounded-control bg-paper/10 px-4 py-2 text-sm text-paper transition-colors hover:bg-paper/20 group"
                 initial="initial"
                 whileHover="hover"
                 whileTap={{ scale: 0.98 }}
@@ -73,10 +73,10 @@ export function Footer() {
         </div>
 
         <div>
-          <p className="t-footer text-paper/50">/Contact</p>
+          <p className="text-sm text-paper/50">/Contact</p>
           <motion.a
             href={`mailto:${personal.email}`}
-            className="t-footer-link mt-4 inline-block text-paper hover:underline group"
+            className="mt-4 inline-block text-sm text-paper hover:underline group"
             initial="initial"
             whileHover="hover"
             whileTap={{ scale: 0.98 }}
@@ -102,7 +102,7 @@ export function Footer() {
             ))}
           </div>
 
-          <p className="t-footer mt-6 text-paper/40">
+          <p className="mt-6 text-xs text-paper/40">
             © {new Date().getFullYear()} {personal.name}. All rights reserved.
           </p>
         </div>

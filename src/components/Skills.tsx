@@ -25,7 +25,7 @@ export function Skills() {
     <section id="skills" className="px-6 py-28 md:px-10">
       <div className="mx-auto max-w-content">
         <Reveal>
-          <h2 className="t-title">Skills</h2>
+          <h2 className="grain-text text-6xl font-semibold tracking-tightest2 sm:text-7xl">Skills</h2>
         </Reveal>
 
         <Reveal delay={0.1}>

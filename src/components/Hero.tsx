@@ -69,7 +69,7 @@ export function Hero() {
         className="relative z-10 mx-auto mt-10 flex w-full max-w-content items-end justify-between px-2 text-xs text-muted sm:text-sm"
       >
         <span className="grain-text font-sans text-2xl font-extrabold sm:text-3xl">©{year}</span>
-        <span className="t-label">/{personal.availability.toUpperCase()}</span>
+        <span className="font-sans tracking-wide text-muted">/{personal.availability.toUpperCase()}</span>
       </motion.div>
     </section>
   );

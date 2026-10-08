@@ -49,8 +49,10 @@ export function Contact() {
     <section id="contact" className="px-6 py-28 md:px-10">
       <div className="mx-auto grid max-w-content gap-14 lg:grid-cols-2 lg:items-center">
         <Reveal>
-          <h2 className="t-title">Let&apos;s talk.</h2>
-          <p className="t-body mt-5 max-w-sm">
+          <h2 className="grain-text text-6xl font-semibold tracking-tightest2 sm:text-7xl">
+            Let&apos;s talk.
+          </h2>
+          <p className="mt-5 max-w-sm text-base leading-relaxed text-muted">
             Have a role, a project, or just want to talk shop about test automation? My inbox is
             open.
           </p>

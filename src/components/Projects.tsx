@@ -19,13 +19,17 @@ export function Projects() {
     <section id="projects" className="px-6 py-28 md:px-10">
       <div className="mx-auto max-w-content">
         <Reveal className="flex flex-wrap items-end justify-between gap-4">
-          <h2 className="t-title">Featured Projects</h2>
+          <h2 className="grain-text text-6xl font-semibold tracking-tightest2 sm:text-7xl">
+            Featured
+            <br />
+            Projects
+          </h2>
           <TextArrowButton
             as="a"
             href={personal.links.github}
             target="_blank"
             rel="noreferrer"
-            className="t-nav text-ink"
+            className="text-sm font-medium text-ink"
           >
             View all work
           </TextArrowButton>
@@ -72,15 +76,15 @@ export function Projects() {
                   </Tilt>
                   <div className="mt-4 flex items-start justify-between gap-3">
                     <div>
-                      <h3 className="t-title">{project.title}</h3>
-                      <p className="t-label mt-1">{project.subtitle}</p>
+                      <h3 className="text-xl font-semibold text-ink">{project.title}</h3>
+                      <p className="mt-1 text-sm text-muted">{project.subtitle}</p>
                     </div>
                     <ArrowUpRight
                       size={18}
                       className="mt-1 shrink-0 text-ink transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                     />
                   </div>
-                  <p className="t-body mt-3">{project.description}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-muted">{project.description}</p>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {project.tech.map((t) => (
                       <motion.span
