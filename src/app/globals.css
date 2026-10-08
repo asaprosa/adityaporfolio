@@ -5,6 +5,17 @@
 html {
   scroll-behavior: smooth;
 }
+/* Lenis (smoothScroll effect): hand control of smoothing to Lenis while it is running. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
 
 body {
   background-color: theme("colors.paper");

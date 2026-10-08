@@ -4,6 +4,8 @@ import "./globals.css";
 import { personal } from "@/data/personal";
 import { SpotifyPlayer } from "@/components/SpotifyPlayer";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { SmoothScrollEffect } from "@/components/effects/SmoothScrollEffect";
+import { effects } from "@/config/effects";
 import { NoiseOverlay } from "@/components/NoiseOverlay";
 
 const archivo = Archivo({
@@ -48,7 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={archivo.variable}>
       <body className="font-sans antialiased">
-        <SmoothScroll />
+        {effects.smoothScroll ? <SmoothScrollEffect /> : <SmoothScroll />}
         {children}
         <SpotifyPlayer />
         <NoiseOverlay />

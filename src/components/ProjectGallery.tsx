@@ -293,6 +293,9 @@ export function ProjectGallery({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
             onClick={closeLightbox}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Image viewer"
             className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-black/90 p-4 sm:p-10"
           >
             <div className="absolute top-6 left-1/2 -translate-x-1/2 text-sm font-medium text-white/70">
