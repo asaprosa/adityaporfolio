@@ -15,6 +15,9 @@ export type Project = {
   repo?: string;
   secondaryLink?: string;
   secondaryLinkLabel?: string;
+  whyBuilt?: string;
+  accessNote?: string;
+  accessEmail?: string;
   images: ProjectImage[];
 };
 
@@ -24,7 +27,7 @@ export const projects: Project[] = [
     title: "Gold & Silver Loan Management System",
     subtitle: "Freelance project",
     description:
-      "A staff-facing web app for a pawn-loan (gold/silver) shop, plus a self-service portal for the shop's B2B wholesale customers (Vyaparis) — covering the full loan lifecycle: pledge, release, renewal, top-up, and partial repayment, with two fully isolated authentication systems for staff vs. self-service customers.",
+      "A staff-facing web app for a pawn-loan (gold/silver) shop, plus a self-service portal for the shop's B2B wholesale customers (Vyaparis), covering the full loan lifecycle: pledge, release, renewal, top-up, and partial repayment, with two fully isolated authentication systems for staff vs. self-service customers.",
     tech: ["Next.js 16", "TypeScript", "React 19", "Prisma", "PostgreSQL", "Tailwind CSS"],
     highlights: [
       "Architected a multi-transaction-type loan engine (pledge, release, renewal, top-up, partial-repayment) with a 3-mode interest calculator (slab/prorata/manual), validated against 799 real historical releases with zero discrepancies via a dedicated replay script.",
@@ -79,7 +82,7 @@ export const projects: Project[] = [
     title: "ATS Resume Tailor",
     subtitle: "Browser-only resume tailoring app",
     description:
-      "A bring-your-own-key app that tailors a resume to a job description: it extracts what the JD actually requires, scores the resume against it, and generates a keyword-optimized, ATS-friendly LaTeX resume — plus a cover letter, interview prep, and a LinkedIn About. A deterministic verification pass flags any generated metric that isn't traceable back to the source resume.",
+      "A bring-your-own-key app that tailors a resume to a job description: it extracts what the JD actually requires, scores the resume against it, and generates a keyword-optimized, ATS-friendly LaTeX resume, plus a cover letter, interview prep, and a LinkedIn About. A deterministic verification pass flags any generated metric that isn't traceable back to the source resume.",
     tech: ["React", "Vite", "JavaScript", "Kimi", "Gemini", "Groq", "NVIDIA NIM"],
     highlights: [
       "JD analysis extracts required/preferred skills, responsibilities, and ATS keywords from a pasted job description. Resume input supports PDF/DOCX/TXT upload — parsed entirely client-side via pdf.js and mammoth, never uploaded anywhere — or pasting directly.",
@@ -104,6 +107,30 @@ export const projects: Project[] = [
         src: "/images/projects/ats-resume-tailor-api-keys.png",
         alt: "ATS Resume Tailor — API Key Settings modal explaining the bring-your-own-key model across Gemini, Groq, NVIDIA NIM, and Kimi",
       },
+    ],
+  },
+  {
+    slug: "ninhon",
+    title: "Ninhon: Japanese Study App",
+    subtitle: "Personal project",
+    description:
+      "A spaced-repetition Japanese study app structured around Minna no Nihongo Shokyu I, with drills, tests, and a recommender that routes practice to the weakest area.",
+    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL"],
+    highlights: [
+      "SM-2 style spaced-repetition scheduler with an ease floor and lapse reset.",
+      "Weak-item detection (3 or more attempts under 70% accuracy) and a recommender that sends the learner to the drill for the weakest category.",
+      "Conjugation drills and sentence tests, particle practice, and a composite Full Lesson Test.",
+      "Content: 25 lessons, 956 vocabulary entries, 139 grammar points, 283 exercises, 219 quiz questions, 74 comprehension questions.",
+      "Six assertion scripts over grading, weak-item logic, recommendation routing, generated-question validity, particle items and sentence-builder items.",
+    ],
+    whyBuilt:
+      "Studying Japanese (elementary level) as part of a goal to work in Japan.",
+    accessNote: "Private project. Live demo available on request (passcode-protected).",
+    accessEmail: "adityaaghodke2@gmail.com",
+    images: [
+      { src: "/images/projects/ninhon-1.png", alt: "Ninhon Japanese study app, screen 1" },
+      { src: "/images/projects/ninhon-2.png", alt: "Ninhon Japanese study app, screen 2" },
+      { src: "/images/projects/ninhon-3.png", alt: "Ninhon Japanese study app, screen 3" },
     ],
   },
 ];

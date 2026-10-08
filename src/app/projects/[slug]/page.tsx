@@ -123,16 +123,38 @@ export default async function ProjectPage({ params }: PageProps) {
                   </li>
                 ))}
               </ul>
+
+              {project.whyBuilt && (
+                <>
+                  <h2 className="mt-12 text-sm font-medium uppercase tracking-wide text-muted">
+                    Why I built it
+                  </h2>
+                  <p className="mt-4 text-base leading-relaxed text-muted">{project.whyBuilt}</p>
+                </>
+              )}
             </div>
 
             <div>
               <h2 className="text-sm font-medium uppercase tracking-wide text-muted">Tech stack</h2>
               <TechStackTags tech={project.tech} />
 
-              {!project.link && !project.repo && (
+              {project.accessNote ? (
                 <p className="mt-8 text-sm leading-relaxed text-muted">
-                  This is a private/internal project — no public link or repository is available.
+                  {project.accessNote}{" "}
+                  <a
+                    href={`mailto:${project.accessEmail}`}
+                    className="underline decoration-ink/20 underline-offset-4 hover:text-ink hover:decoration-ink"
+                  >
+                    {project.accessEmail}
+                  </a>
                 </p>
+              ) : (
+                !project.link &&
+                !project.repo && (
+                  <p className="mt-8 text-sm leading-relaxed text-muted">
+                    This is a private/internal project. No public link or repository is available.
+                  </p>
+                )
               )}
             </div>
           </div>
