@@ -5,6 +5,7 @@ import { personal } from "@/data/personal";
 import { SpotifyPlayer } from "@/components/SpotifyPlayer";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { SmoothScrollEffect } from "@/components/effects/SmoothScrollEffect";
+import { curtainArmScript } from "@/components/effects/CurtainEffect";
 import { effects } from "@/config/effects";
 import { NoiseOverlay } from "@/components/NoiseOverlay";
 
@@ -48,10 +49,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={archivo.variable}>
+    <html lang="en" className={archivo.variable} suppressHydrationWarning>
       <body className="font-sans antialiased">
-        {effects.smoothScroll ? <SmoothScrollEffect /> : <SmoothScroll />}
+        {/* Runs at parse time (first thing in body), before any content paints. */}
+        {effects.curtain && <script dangerouslySetInnerHTML={{ __html: curtainArmScript }} />}
         {children}
+        {/* Rendered after children: it draws DOM, and Next streams its own nodes at the top of body. */}
+        {effects.smoothScroll ? <SmoothScrollEffect /> : <SmoothScroll />}
         <SpotifyPlayer />
         <NoiseOverlay />
       </body>
