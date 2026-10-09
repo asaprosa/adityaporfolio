@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { MoreHorizontal, X } from "lucide-react";
 import { personal } from "@/data/personal";
 import { RollingText } from "@/components/RollingTextButton";
+import { effects } from "@/config/effects";
 
 const sections = [
   { id: "top", label: "Home" },
@@ -20,7 +21,8 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const sectionHref = (id: string) => (isHome ? `#${id}` : `/#${id}`);
+  const sectionHref = (id: string) =>
+    id === "projects" && effects.projectIndex ? "/projects" : isHome ? `#${id}` : `/#${id}`;
 
   return (
     <motion.div

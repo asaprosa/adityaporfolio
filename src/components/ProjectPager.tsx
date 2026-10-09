@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
 import { useMediaQuery, usePrefersReducedMotion } from "@/lib/hooks";
+import { effects } from "@/config/effects";
 
 export type PagerProject = { slug: string; title: string; image?: string };
 
@@ -171,7 +172,7 @@ export function ProjectPager({ prev, next }: { prev?: PagerProject; next?: Pager
   return (
     <nav aria-label="Project navigation" className="mt-24 grid grid-cols-3 items-end gap-4">
       <div className="justify-self-start w-full">{prev && <PagerLink dir="prev" project={prev} />}</div>
-      <Link href="/#projects" className="t-pager justify-self-center normal-case leading-4 text-black">
+      <Link href={effects.projectIndex ? "/projects" : "/#projects"} className="t-pager justify-self-center normal-case leading-4 text-black">
         Back to List
       </Link>
       <div className="justify-self-end w-full">{next && <PagerLink dir="next" project={next} />}</div>
