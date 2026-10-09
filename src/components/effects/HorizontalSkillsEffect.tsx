@@ -136,7 +136,8 @@ export function HorizontalSkills() {
 
   if (!horizontal) {
     return (
-      <section id="skills" className="px-6 py-28 md:px-10">
+      // The ref stays attached in the stacked layout too: useScroll throws if its target ref is never hydrated.
+      <section id="skills" ref={sectionRef} className="px-6 py-28 md:px-10">
         <div className="mx-auto max-w-content">
           <h2 className="grain-text text-6xl font-semibold tracking-tightest2 sm:text-7xl">Skills</h2>
           <div className="mt-14 space-y-16">
@@ -152,14 +153,14 @@ export function HorizontalSkills() {
   }
 
   return (
-    <section id="skills" ref={sectionRef} style={{ height: `${COUNT * 100}vh` }} className="relative">
+    <section id="skills" ref={sectionRef} style={{ height: `${COUNT * 100}dvh` }} className="relative">
       <div
         role="region"
         aria-roledescription="carousel"
         aria-label="Skills in four panels. Use the left and right arrow keys, Home and End, or the buttons below to move between panels."
         tabIndex={0}
         onKeyDown={onKeyDown}
-        className="sticky top-0 flex h-screen flex-col overflow-hidden focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-ink"
+        className="sticky top-0 flex h-dvh flex-col overflow-hidden focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-ink"
       >
         <div className="mx-auto w-full max-w-content px-6 pt-28 md:px-10">
           <h2 className="grain-text text-6xl font-semibold tracking-tightest2 sm:text-7xl">Skills</h2>
@@ -181,7 +182,7 @@ export function HorizontalSkills() {
           </motion.div>
         </div>
 
-        <div className="mx-auto flex w-full max-w-content gap-2 px-6 pb-10 md:px-10">
+        <div className="mx-auto flex w-full max-w-content gap-2 px-6 pb-6 md:px-10">
           {panels.map((p, i) => (
             <button
               key={p.title}
@@ -189,8 +190,10 @@ export function HorizontalSkills() {
               onClick={() => goTo(i)}
               aria-label={`Go to panel ${i + 1} of ${COUNT}: ${p.title}`}
               aria-current={i === active}
-              className={`h-1 flex-1 rounded-full transition-colors ${i <= active ? "bg-ink" : "bg-ink/15"}`}
-            />
+              className="group flex h-11 flex-1 items-center"
+            >
+              <span className={`block h-1 w-full rounded-full transition-colors ${i <= active ? "bg-ink" : "bg-ink/15"}`} />
+            </button>
           ))}
         </div>
 

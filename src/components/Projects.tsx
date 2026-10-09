@@ -31,7 +31,7 @@ export function Projects() {
             href={personal.links.github}
             target="_blank"
             rel="noreferrer"
-            className="text-sm font-medium text-ink"
+            className="min-h-11 text-sm font-medium text-ink"
           >
             View all work
           </TextArrowButton>

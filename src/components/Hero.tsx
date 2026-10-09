@@ -23,7 +23,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 pt-32 pb-16 md:px-10"
+      className="relative flex min-h-dvh flex-col justify-center overflow-hidden px-6 pt-32 pb-16 md:px-10"
     >
       <AsciiField className="pointer-events-none absolute inset-0 z-0" />
 

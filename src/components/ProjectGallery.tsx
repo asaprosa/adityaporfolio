@@ -239,7 +239,7 @@ export function ProjectGallery({
               type="button"
               onClick={() => goTo(currentIndex - 1, { manual: true })}
               aria-label="Previous image"
-              className="absolute left-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/40 text-white transition-colors hover:bg-black/60"
+              className="absolute left-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/40 text-white transition-colors hover:bg-black/60"
             >
               <ChevronLeft size={18} />
             </button>
@@ -247,7 +247,7 @@ export function ProjectGallery({
               type="button"
               onClick={() => goTo(currentIndex + 1, { manual: true })}
               aria-label="Next image"
-              className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/40 text-white transition-colors hover:bg-black/60"
+              className="absolute right-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/40 text-white transition-colors hover:bg-black/60"
             >
               <ChevronRight size={18} />
             </button>
@@ -256,31 +256,35 @@ export function ProjectGallery({
       </div>
 
       {canAutoplay && images.length > 1 && (
-        <div className="mt-3 flex gap-1.5">
+        <div className="flex gap-1.5">
           {images.map((img, i) => (
             <button
               key={img.src}
               type="button"
               onClick={() => goTo(i, { manual: true })}
               aria-label={`Go to image ${i + 1}`}
-              className="h-1 flex-1 overflow-hidden rounded-full bg-ink/15"
+              className="flex h-11 flex-1 items-center"
             >
-              <motion.div className="h-full origin-left bg-ink" style={{ scaleX: progressValues[i] }} />
+              <span className="block h-1 w-full overflow-hidden rounded-full bg-ink/15">
+                <motion.span className="block h-full origin-left bg-ink" style={{ scaleX: progressValues[i] }} />
+              </span>
             </button>
           ))}
         </div>
       )}
 
       {reducedMotion && images.length > 1 && (
-        <div className="mt-3 flex justify-center gap-1.5">
+        <div className="flex justify-center">
           {images.map((img, i) => (
             <button
               key={img.src}
               type="button"
               onClick={() => goTo(i, { manual: true })}
               aria-label={`Go to image ${i + 1}`}
-              className={`h-1.5 w-1.5 rounded-full ${i === currentIndex ? "bg-ink" : "bg-ink/20"}`}
-            />
+              className="flex h-11 w-11 items-center justify-center"
+            >
+              <span className={`block h-1.5 w-1.5 rounded-full ${i === currentIndex ? "bg-ink" : "bg-ink/20"}`} />
+            </button>
           ))}
         </div>
       )}

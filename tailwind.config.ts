@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 const config: Config = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
@@ -29,7 +30,11 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    // coarse: touch screens (including 768px tablets, which use the desktop layout), for 44px targets and 16px inputs.
+    // The :not(#coarse) adds specificity so it also beats md: utilities, which Tailwind emits after plugin variants.
+    plugin(({ addVariant }) => addVariant("coarse", "@media (pointer: coarse) { &:not(#coarse) }")),
+  ],
 };
 
 export default config;

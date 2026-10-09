@@ -24,7 +24,8 @@ export function TickerLinks({ links }: { links: TickerLink[] }) {
           <li key={link.label}>
             <motion.a
               href={link.href}
-              className="inline-block text-sm text-paper"
+              // Negative margins keep the visual spacing; the padding and min sizes make the tap target 44px.
+              className="-mx-2 -my-3 inline-flex min-h-11 min-w-11 items-center justify-center px-2 text-sm text-paper"
               initial={false}
               animate={{ opacity: dimmed ? 0.5 : 1, y: reduced ? 0 : dimmed ? 2 : lifted ? -2 : 0 }}
               transition={reduced ? { duration: 0 } : { type: "spring", visualDuration: 0.3, bounce: 0.1 }}

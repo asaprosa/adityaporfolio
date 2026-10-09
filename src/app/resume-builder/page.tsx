@@ -19,7 +19,7 @@ export default function ResumeBuilderPage() {
         <div className="mx-auto max-w-content">
           <Link
             href="/projects/ats-resume-tailor"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-muted hover:text-ink"
+            className="inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-muted hover:text-ink"
           >
             <ArrowLeft size={15} />
             Back to project
@@ -38,7 +38,7 @@ export default function ResumeBuilderPage() {
           </p>
           <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted">
             This is a smaller, in-portfolio build of{" "}
-            <Link href="/projects/ats-resume-tailor" className="text-ink underline decoration-ink/30 underline-offset-4 hover:decoration-ink">
+            <Link href="/projects/ats-resume-tailor" className="-my-4 inline-block py-4 text-ink underline decoration-ink/30 underline-offset-4 hover:decoration-ink">
               ATS Resume Tailor
             </Link>
             , which also generates LaTeX resumes, cover letters, interview prep, and a LinkedIn
@@ -47,7 +47,7 @@ export default function ResumeBuilderPage() {
               href="https://resumetemplatefromjd.vercel.app/"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1 text-ink underline decoration-ink/30 underline-offset-4 hover:decoration-ink"
+              className="-my-4 inline-flex items-center gap-1 py-4 text-ink underline decoration-ink/30 underline-offset-4 hover:decoration-ink"
             >
               try the full app
               <ArrowUpRight size={12} />
@@ -57,7 +57,7 @@ export default function ResumeBuilderPage() {
               href="https://github.com/AdityaGhodkeIesoftek/ResumeFromJD"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1 text-ink underline decoration-ink/30 underline-offset-4 hover:decoration-ink"
+              className="-my-4 inline-flex items-center gap-1 py-4 text-ink underline decoration-ink/30 underline-offset-4 hover:decoration-ink"
             >
               see the source
               <ArrowUpRight size={12} />

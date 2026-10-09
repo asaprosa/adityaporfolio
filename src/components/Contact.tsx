@@ -69,7 +69,7 @@ export function Contact() {
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", visualDuration: 0.3, bounce: 0.15 }}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 text-ink transition-colors hover:bg-ink hover:text-paper"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-ink/15 text-ink transition-colors hover:bg-ink hover:text-paper"
             >
               <Github size={17} />
             </motion.a>
@@ -81,7 +81,7 @@ export function Contact() {
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", visualDuration: 0.3, bounce: 0.15 }}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 text-ink transition-colors hover:bg-ink hover:text-paper"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-ink/15 text-ink transition-colors hover:bg-ink hover:text-paper"
             >
               <Linkedin size={17} />
             </motion.a>
@@ -100,7 +100,7 @@ export function Contact() {
                   name="name"
                   type="text"
                   required
-                  className="mt-2 w-full rounded-control border border-paper/15 bg-transparent px-4 py-3 text-sm text-paper outline-none transition-colors placeholder:text-paper/40 focus:border-paper/50"
+                  className="mt-2 w-full rounded-control border border-paper/15 bg-transparent px-4 py-3 text-base text-paper outline-none md:text-sm coarse:text-base transition-colors placeholder:text-paper/40 focus:border-paper/50"
                   placeholder="Enter your name"
                 />
               </div>
@@ -113,7 +113,7 @@ export function Contact() {
                   name="email"
                   type="email"
                   required
-                  className="mt-2 w-full rounded-control border border-paper/15 bg-transparent px-4 py-3 text-sm text-paper outline-none transition-colors placeholder:text-paper/40 focus:border-paper/50"
+                  className="mt-2 w-full rounded-control border border-paper/15 bg-transparent px-4 py-3 text-base text-paper outline-none md:text-sm coarse:text-base transition-colors placeholder:text-paper/40 focus:border-paper/50"
                   placeholder="Enter your email"
                 />
               </div>
@@ -127,7 +127,7 @@ export function Contact() {
                   name="message"
                   required
                   rows={5}
-                  className="mt-2 w-full resize-none rounded-control border border-paper/15 bg-transparent px-4 py-3 text-sm text-paper outline-none transition-colors placeholder:text-paper/40 focus:border-paper/50"
+                  className="mt-2 w-full resize-none rounded-control border border-paper/15 bg-transparent px-4 py-3 text-base text-paper outline-none md:text-sm coarse:text-base transition-colors placeholder:text-paper/40 focus:border-paper/50"
                   placeholder="Tell me about your project"
                 />
               </div>

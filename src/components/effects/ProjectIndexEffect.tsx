@@ -100,14 +100,14 @@ export function ProjectIndex() {
               <span className="hidden text-sm text-muted md:block">{project.subtitle}</span>
               <span className="text-sm tabular-nums text-muted">{project.year}</span>
               <span className="col-span-2 mt-1 text-sm text-muted md:hidden">{project.subtitle}</span>
-            </Link>
 
-            {/* Touch devices have no hover, so the preview sits inline under the row. */}
-            {project.images[0] && (
-              <div className="relative mb-6 hidden aspect-[16/9] w-full overflow-hidden rounded-card [@media(hover:none)]:block">
-                <Image src={project.images[0].src} alt="" fill sizes="100vw" className="object-cover object-top" />
-              </div>
-            )}
+              {/* Touch devices have no hover, so the preview sits inline in the row, and it is part of the link. */}
+              {project.images[0] && (
+                <span className="relative col-span-full mt-5 hidden aspect-[16/9] overflow-hidden rounded-card [@media(hover:none)]:block">
+                  <Image src={project.images[0].src} alt="" fill sizes="100vw" className="object-cover object-top" />
+                </span>
+              )}
+            </Link>
           </li>
         ))}
       </ul>

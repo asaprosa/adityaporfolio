@@ -82,7 +82,7 @@ export function Footer() {
           <p className="text-sm text-paper/50">/Contact</p>
           <motion.a
             href={`mailto:${personal.email}`}
-            className="mt-4 inline-block text-sm text-paper hover:underline group"
+            className="-my-3 mt-4 inline-flex min-h-11 items-center text-sm text-paper hover:underline group"
             initial="initial"
             whileHover="hover"
             whileTap={{ scale: 0.98 }}
@@ -101,7 +101,7 @@ export function Footer() {
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", visualDuration: 0.3, bounce: 0.15 }}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-paper/15 text-paper transition-colors hover:bg-paper hover:text-ink"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-paper/15 text-paper transition-colors hover:bg-paper hover:text-ink"
               >
                 <Icon size={15} />
               </motion.a>

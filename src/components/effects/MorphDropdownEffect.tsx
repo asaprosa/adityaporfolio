@@ -8,7 +8,7 @@ import { usePrefersReducedMotion } from "@/lib/hooks";
 export const TOPICS = ["Hiring", "Freelance", "Collaboration", "Other"] as const;
 
 const PILL = 46;
-const ROW = 40;
+const ROW = 44; // 44px rows keep the options a comfortable tap target
 const PAD = 6;
 const OPEN_HEIGHT = PILL + TOPICS.length * ROW + PAD * 2;
 const SPRING = { type: "spring", stiffness: 420, damping: 34 } as const;
@@ -32,8 +32,15 @@ export function TopicSelect() {
 
   // Move focus into the list while it is open (the options use aria-activedescendant).
   useEffect(() => {
-    if (open) list.current?.focus();
-  }, [open]);
+    if (!open) return;
+    list.current?.focus({ preventScroll: true });
+    // Once the menu has grown, bring it fully into view (matters on phones, where the field sits near the fold).
+    const t = window.setTimeout(
+      () => list.current?.parentElement?.scrollIntoView({ block: "nearest", behavior: reduced ? "auto" : "smooth" }),
+      reduced ? 0 : 260
+    );
+    return () => window.clearTimeout(t);
+  }, [open, reduced]);
 
   // Close on a pointer press outside.
   useEffect(() => {
@@ -139,7 +146,7 @@ export function TopicSelect() {
             aria-labelledby="topic-label topic-trigger"
             onClick={() => (open ? setOpen(false) : show(value ? TOPICS.indexOf(value as (typeof TOPICS)[number]) : 0))}
             onKeyDown={onTriggerKey}
-            className="flex w-full items-center justify-between px-4 text-sm text-paper outline-none focus-visible:bg-paper/10"
+            className="flex w-full items-center justify-between px-4 text-base text-paper outline-none focus-visible:bg-paper/10 md:text-sm coarse:text-base"
             style={{ height: PILL - 2 }}
           >
             <span className="relative grid">
@@ -196,7 +203,7 @@ export function TopicSelect() {
                 aria-selected={value === topic}
                 onPointerEnter={() => setHighlight(i)}
                 onClick={() => choose(i)}
-                className="relative flex cursor-pointer items-center justify-between rounded-control px-3 text-sm text-paper"
+                className="relative flex cursor-pointer items-center justify-between rounded-control px-3 text-base text-paper md:text-sm coarse:text-base"
                 style={{ height: ROW }}
               >
                 {highlight === i && (

@@ -68,7 +68,7 @@ export default async function ProjectPage({ params }: PageProps) {
         <div className="mx-auto max-w-content">
           <Link
             href="/#projects"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-muted hover:text-ink"
+            className="inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-muted hover:text-ink"
           >
             <ArrowLeft size={15} />
             Back to portfolio
@@ -155,7 +155,7 @@ export default async function ProjectPage({ params }: PageProps) {
                   {project.accessNote}{" "}
                   <a
                     href={`mailto:${project.accessEmail}`}
-                    className="underline decoration-ink/20 underline-offset-4 hover:text-ink hover:decoration-ink"
+                    className="-my-4 inline-block py-4 underline decoration-ink/20 underline-offset-4 hover:text-ink hover:decoration-ink"
                   >
                     {project.accessEmail}
                   </a>
