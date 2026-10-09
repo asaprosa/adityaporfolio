@@ -28,9 +28,9 @@ export function Projects() {
           </h2>
           <TextArrowButton
             as="a"
-            href={personal.links.github}
-            target="_blank"
-            rel="noreferrer"
+            href={effects.projectIndex ? "/projects" : personal.links.github}
+            target={effects.projectIndex ? undefined : "_blank"}
+            rel={effects.projectIndex ? undefined : "noreferrer"}
             className="min-h-11 text-sm font-medium text-ink"
           >
             View all work
@@ -92,14 +92,9 @@ export function Projects() {
                   <p className="mt-3 text-sm leading-relaxed text-muted">{project.description}</p>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {project.tech.map((t) => (
-                      <motion.span
-                        key={t}
-                        initial="initial"
-                        whileHover="hover"
-                        className="rounded-control border border-ink/15 px-2.5 py-1 text-xs text-ink cursor-default"
-                      >
-                        <RollingText text={t} />
-                      </motion.span>
+                      <span key={t} className="rounded-control border border-ink/15 px-2.5 py-1 text-xs text-ink">
+                        {t}
+                      </span>
                     ))}
                   </div>
                 </MotionLink>

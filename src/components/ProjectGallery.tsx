@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, animate, motion, motionValue, type PanInfo } from "motion/react";
-import { ArrowUpRight, ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, Maximize2, X } from "lucide-react";
 import { usePrefersReducedMotion } from "@/lib/hooks";
 
 const SPRING = { type: "spring" as const, visualDuration: 0.4, bounce: 0.2 };
@@ -40,6 +40,9 @@ export function ProjectGallery({
   const manualOverrideRef = useRef(false); // synchronous mirror of manualOverride, checked in onComplete to close a click-vs-timer race
   const dragOffsetRef = useRef(0);
   const viewportRef = useRef<HTMLDivElement>(null);
+  const slideRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const wasOpenRef = useRef(false);
 
   useEffect(() => {
     const el = viewportRef.current;
@@ -112,6 +115,18 @@ export function ProjectGallery({
     return () => {
       document.body.style.overflow = "";
     };
+  }, [lightboxOpen]);
+
+  // Keyboard users: move focus into the viewer when it opens, and back to the slide when it closes.
+  useEffect(() => {
+    if (lightboxOpen) {
+      wasOpenRef.current = true;
+      closeRef.current?.focus();
+    } else if (wasOpenRef.current) {
+      wasOpenRef.current = false;
+      slideRefs.current[currentIndex]?.focus();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lightboxOpen]);
 
   useEffect(() => {
@@ -189,10 +204,19 @@ export function ProjectGallery({
           onDragEnd={handleDragEnd}
         >
           {images.map((img, i) => (
-            <motion.div
+            // A real button: Tab reaches the current slide, Enter or Space opens the viewer. Slides that are
+            // off-screen stay out of the tab order so focus can never scroll the clipped track.
+            <motion.button
               key={img.src}
+              ref={(el: HTMLButtonElement | null) => {
+                slideRefs.current[i] = el;
+              }}
+              type="button"
+              aria-label={`Open image ${i + 1} of ${images.length}`}
+              aria-hidden={i !== currentIndex}
+              tabIndex={i === currentIndex ? 0 : -1}
               onClick={() => handleSlideClick(i)}
-              className="relative h-full w-full shrink-0"
+              className="relative block h-full w-full shrink-0 cursor-[inherit] outline-none focus-visible:shadow-[inset_0_0_0_2px_#fff,inset_0_0_0_5px_#111]"
             >
               <Image
                 src={img.src}
@@ -203,7 +227,7 @@ export function ProjectGallery({
                 draggable={false}
                 className="object-cover object-top"
               />
-            </motion.div>
+            </motion.button>
           ))}
         </motion.div>
 
@@ -229,7 +253,7 @@ export function ProjectGallery({
             transition={SPRING}
             className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-ink"
           >
-            <ArrowUpRight size={16} />
+            <Maximize2 size={15} />
           </motion.div>
         </motion.div>
 
@@ -307,6 +331,7 @@ export function ProjectGallery({
             </div>
 
             <button
+              ref={closeRef}
               type="button"
               onClick={closeLightbox}
               aria-label="Close"

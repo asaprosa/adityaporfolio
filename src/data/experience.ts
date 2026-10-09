@@ -15,7 +15,7 @@ export type ExperienceEntry = {
 
 /**
  * The figures that appear both in the stat row and inside the bullet text. The bullets below are built
- * from this constant, so the two can never drift apart. e2eCases and e2eCasesFrom appear only in the stat row.
+ * from this constant, so the two can never drift apart.
  */
 export const experienceStats = {
   e2eCases: 700,
@@ -42,7 +42,7 @@ export const experience: ExperienceEntry[] = [
       `Executed E2E manual and automated test plans across a ${experienceStats.modules}-module responsive SaaS application, identifying complex edge cases.`,
       "Performed initial Root Cause Analysis (RCA) on defect submissions using Chrome DevTools (Network/Console tabs) and frontend source code tracing.",
       "Engineered custom SQL queries with Trino for database-level verification, data integrity, and schema conformance checks.",
-      `Migrating the team's Selenium/Java regression suite to Playwright, leveraging its native AI agent workflow (Planner/Generator/Healer) to auto-generate test specs and self-heal locators. Built ${experienceStats.playwrightScenarios}+ business-outcome test scenarios across payment, appointment, consultation, patient, and pharmacy workflows via Playwright CLI plus MCP, asserting financial invariants and data persistence rather than surface-level UI checks, with migration continuing module by module.`,
+      `Expanded Java + Selenium regression coverage from ${experienceStats.e2eCasesFrom} to ${experienceStats.e2eCases}+ E2E cases; migrating the team's Selenium/Java regression suite to Playwright, leveraging its native AI agent workflow (Planner/Generator/Healer) to auto-generate test specs and self-heal locators. Built ${experienceStats.playwrightScenarios}+ business-outcome test scenarios across payment, appointment, consultation, patient, and pharmacy workflows via Playwright CLI plus MCP, asserting financial invariants and data persistence rather than surface-level UI checks, with migration continuing module by module.`,
       `Coordinated QA release sign-off across an average of ${experienceStats.buildsPerRelease}+ builds per release cycle, documenting defect reports and reproduction steps.`,
       "Configured scheduled automated test execution via GitHub Actions CI/CD, implementing runner cleanup scripts to terminate orphaned Chrome/driver processes and maintain pipeline reliability.",
       "Executed REST API validation using Postman and security testing with Burp Suite.",
