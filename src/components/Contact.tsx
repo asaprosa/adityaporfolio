@@ -6,6 +6,8 @@ import { AnimatePresence, motion } from "motion/react";
 import { Reveal } from "@/components/Reveal";
 import { personal } from "@/data/personal";
 import { RollingTextButton } from "@/components/RollingTextButton";
+import { TopicSelect } from "@/components/effects/MorphDropdownEffect";
+import { effects } from "@/config/effects";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -19,10 +21,12 @@ export function Contact() {
     setErrorMessage("");
 
     const form = e.currentTarget;
+    const topic = (form.elements.namedItem("topic") as HTMLInputElement | null)?.value;
+    const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value;
     const data = {
       name: (form.elements.namedItem("name") as HTMLInputElement).value,
       email: (form.elements.namedItem("email") as HTMLInputElement).value,
-      message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+      message: topic ? `Topic: ${topic}\n\n${message}` : message,
     };
 
     try {
@@ -113,6 +117,7 @@ export function Contact() {
                   placeholder="Enter your email"
                 />
               </div>
+              {effects.morphDropdown && <TopicSelect />}
               <div>
                 <label htmlFor="message" className="text-sm text-paper/70">
                   Your message
