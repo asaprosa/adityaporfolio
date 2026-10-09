@@ -127,7 +127,7 @@ function PagerLink({ dir, project }: { dir: "prev" | "next"; project: PagerProje
         onFocus={(e) => setFocused(e.currentTarget.matches(":focus-visible"))}
         onBlur={() => setFocused(false)}
         className={`t-pager absolute bottom-0 flex w-max max-w-[calc(50vw-6rem)] flex-col overflow-hidden max-md:relative max-md:min-h-11 max-md:w-full max-md:max-w-none coarse:min-h-11 coarse:justify-end ${
-          isPrev ? "left-0 items-start text-left" : "right-0 items-end text-right"
+          isPrev ? "left-0 items-start text-left" : "right-0 items-end text-right max-md:items-start max-md:text-left"
         }`}
       >
         {!coarse && !compact && (
