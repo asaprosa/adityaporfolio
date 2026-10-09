@@ -182,7 +182,7 @@ export function HorizontalSkills() {
           </motion.div>
         </div>
 
-        <div className="mx-auto flex w-full max-w-content gap-2 px-6 pb-6 md:px-10">
+        <div className="mx-auto flex w-full max-w-content gap-2 px-6 pb-20 md:px-10">
           {panels.map((p, i) => (
             <button
               key={p.title}

@@ -35,7 +35,7 @@ export function Hero() {
       >
         <motion.h1
           variants={item}
-          className="grain-text relative select-none break-words text-center font-sans text-[12.5vw] font-extrabold leading-[0.88] tracking-tightest2 sm:text-[13vw] lg:text-[10vw]"
+          className="grain-text relative select-none break-words text-center font-sans text-[12.5vw] font-extrabold leading-[0.88] tracking-tightest2 sm:text-[12vw] lg:text-[10vw]"
         >
           <motion.span
             animate={{ rotate: [0, -8, 8, 0], scale: [1, 1.08, 1] }}
