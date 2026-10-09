@@ -23,7 +23,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 pt-32 pb-16 md:px-10"
+      className="relative flex min-h-dvh flex-col justify-center overflow-hidden px-6 pt-32 pb-16 md:px-10"
     >
       <AsciiField className="pointer-events-none absolute inset-0 z-0" />
 
@@ -35,7 +35,7 @@ export function Hero() {
       >
         <motion.h1
           variants={item}
-          className="grain-text relative select-none break-words text-center font-sans text-[12.5vw] font-extrabold leading-[0.88] tracking-tightest2 sm:text-[13vw] lg:text-[10vw]"
+          className="grain-text relative select-none break-words text-center font-sans text-[12.5vw] font-extrabold leading-[0.88] tracking-tightest2 sm:text-[12vw] lg:text-[10vw]"
         >
           <motion.span
             animate={{ rotate: [0, -8, 8, 0], scale: [1, 1.08, 1] }}

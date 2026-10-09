@@ -5,6 +5,8 @@ import { Github, Linkedin } from "lucide-react";
 import { personal } from "@/data/personal";
 import { RollingText } from "@/components/RollingTextButton";
 import { motion } from "motion/react";
+import { TickerLinks } from "@/components/effects/TickerEffect";
+import { effects } from "@/config/effects";
 
 const quickLinks = [
   { id: "top", label: "Home" },
@@ -54,6 +56,9 @@ export function Footer() {
 
         <div>
           <p className="text-sm text-paper/50">/Quick links</p>
+          {effects.ticker ? (
+            <TickerLinks links={quickLinks.map((link) => ({ label: link.label, href: sectionHref(link.id) }))} />
+          ) : (
           <div className="mt-4 flex flex-wrap gap-2">
             {quickLinks.map((link) => (
               <motion.a
@@ -70,13 +75,14 @@ export function Footer() {
               </motion.a>
             ))}
           </div>
+          )}
         </div>
 
         <div>
           <p className="text-sm text-paper/50">/Contact</p>
           <motion.a
             href={`mailto:${personal.email}`}
-            className="mt-4 inline-block text-sm text-paper hover:underline group"
+            className="-my-3 mt-4 inline-flex min-h-11 items-center text-sm text-paper hover:underline group"
             initial="initial"
             whileHover="hover"
             whileTap={{ scale: 0.98 }}
@@ -95,7 +101,7 @@ export function Footer() {
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", visualDuration: 0.3, bounce: 0.15 }}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-paper/15 text-paper transition-colors hover:bg-paper hover:text-ink"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-paper/15 text-paper transition-colors hover:bg-paper hover:text-ink"
               >
                 <Icon size={15} />
               </motion.a>

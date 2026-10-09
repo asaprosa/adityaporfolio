@@ -6,6 +6,8 @@ import { AnimatePresence, motion } from "motion/react";
 import { Reveal } from "@/components/Reveal";
 import { personal } from "@/data/personal";
 import { RollingTextButton } from "@/components/RollingTextButton";
+import { TopicSelect } from "@/components/effects/MorphDropdownEffect";
+import { effects } from "@/config/effects";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -19,10 +21,12 @@ export function Contact() {
     setErrorMessage("");
 
     const form = e.currentTarget;
+    const topic = (form.elements.namedItem("topic") as HTMLInputElement | null)?.value;
+    const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value;
     const data = {
       name: (form.elements.namedItem("name") as HTMLInputElement).value,
       email: (form.elements.namedItem("email") as HTMLInputElement).value,
-      message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+      message: topic ? `Topic: ${topic}\n\n${message}` : message,
     };
 
     try {
@@ -65,7 +69,7 @@ export function Contact() {
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", visualDuration: 0.3, bounce: 0.15 }}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 text-ink transition-colors hover:bg-ink hover:text-paper"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-ink/15 text-ink transition-colors hover:bg-ink hover:text-paper"
             >
               <Github size={17} />
             </motion.a>
@@ -77,7 +81,7 @@ export function Contact() {
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", visualDuration: 0.3, bounce: 0.15 }}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 text-ink transition-colors hover:bg-ink hover:text-paper"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-ink/15 text-ink transition-colors hover:bg-ink hover:text-paper"
             >
               <Linkedin size={17} />
             </motion.a>
@@ -96,7 +100,7 @@ export function Contact() {
                   name="name"
                   type="text"
                   required
-                  className="mt-2 w-full rounded-control border border-paper/15 bg-transparent px-4 py-3 text-sm text-paper outline-none transition-colors placeholder:text-paper/40 focus:border-paper/50"
+                  className="mt-2 w-full rounded-control border border-paper/15 bg-transparent px-4 py-3 text-base text-paper outline-none md:text-sm coarse:text-base transition-colors placeholder:text-paper/40 focus:border-paper/50"
                   placeholder="Enter your name"
                 />
               </div>
@@ -109,10 +113,11 @@ export function Contact() {
                   name="email"
                   type="email"
                   required
-                  className="mt-2 w-full rounded-control border border-paper/15 bg-transparent px-4 py-3 text-sm text-paper outline-none transition-colors placeholder:text-paper/40 focus:border-paper/50"
+                  className="mt-2 w-full rounded-control border border-paper/15 bg-transparent px-4 py-3 text-base text-paper outline-none md:text-sm coarse:text-base transition-colors placeholder:text-paper/40 focus:border-paper/50"
                   placeholder="Enter your email"
                 />
               </div>
+              {effects.morphDropdown && <TopicSelect />}
               <div>
                 <label htmlFor="message" className="text-sm text-paper/70">
                   Your message
@@ -122,7 +127,7 @@ export function Contact() {
                   name="message"
                   required
                   rows={5}
-                  className="mt-2 w-full resize-none rounded-control border border-paper/15 bg-transparent px-4 py-3 text-sm text-paper outline-none transition-colors placeholder:text-paper/40 focus:border-paper/50"
+                  className="mt-2 w-full resize-none rounded-control border border-paper/15 bg-transparent px-4 py-3 text-base text-paper outline-none md:text-sm coarse:text-base transition-colors placeholder:text-paper/40 focus:border-paper/50"
                   placeholder="Tell me about your project"
                 />
               </div>

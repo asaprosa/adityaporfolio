@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { MoreHorizontal, X } from "lucide-react";
 import { personal } from "@/data/personal";
 import { RollingText } from "@/components/RollingTextButton";
+import { effects } from "@/config/effects";
 
 const sections = [
   { id: "top", label: "Home" },
@@ -20,7 +21,8 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const sectionHref = (id: string) => (isHome ? `#${id}` : `/#${id}`);
+  const sectionHref = (id: string) =>
+    id === "projects" && effects.projectIndex ? "/projects" : isHome ? `#${id}` : `/#${id}`;
 
   return (
     <motion.div
@@ -32,7 +34,7 @@ export function Nav() {
       <div className="grain-surface flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 shadow-lg shadow-ink/10">
         <motion.a
           href={sectionHref("top")}
-          className="text-sm font-semibold text-paper"
+          className="-mx-2 -my-2 inline-flex min-h-11 items-center px-2 text-sm font-semibold text-paper"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", visualDuration: 0.3, bounce: 0.15 }}
@@ -47,9 +49,11 @@ export function Nav() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", visualDuration: 0.3, bounce: 0.15 }}
-          className="flex h-7 w-7 items-center justify-center rounded-full bg-paper text-ink"
+          className="-m-2 flex h-11 w-11 items-center justify-center"
         >
-          {open ? <X size={15} /> : <MoreHorizontal size={15} />}
+          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-paper text-ink">
+            {open ? <X size={15} /> : <MoreHorizontal size={15} />}
+          </span>
         </motion.button>
       </div>
 
@@ -68,7 +72,7 @@ export function Nav() {
                   <motion.a
                     href={sectionHref(s.id)}
                     onClick={() => setOpen(false)}
-                    className="block rounded-control px-4 py-2 text-sm text-paper/80 transition-colors hover:bg-paper/10 hover:text-paper"
+                    className="flex min-h-11 items-center rounded-control px-4 py-2 text-sm text-paper/80 transition-colors hover:bg-paper/10 hover:text-paper"
                     initial="initial"
                     whileHover="hover"
                     whileTap={{ scale: 0.98 }}

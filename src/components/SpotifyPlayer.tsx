@@ -108,13 +108,14 @@ export function SpotifyPlayer() {
       <motion.div
         ref={containerRef}
         aria-hidden={!isPlaying}
-        className="fixed bottom-24 right-6 z-40 w-[300px] overflow-hidden rounded-card bg-ink shadow-lg shadow-ink/10"
+        className="fixed bottom-24 right-6 z-40 w-[300px] max-md:hidden overflow-hidden rounded-card bg-ink shadow-lg shadow-ink/10"
         style={{ pointerEvents: isPlaying ? "auto" : "none" }}
         initial={false}
         animate={isPlaying ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
       />
-      <div className="fixed bottom-6 right-6 z-50">
+      {/* Hidden under 768px so it never covers content on phones. */}
+      <div className="fixed bottom-6 right-6 z-50 max-md:hidden">
         <motion.button
           type="button"
           onClick={() => controllerRef.current?.togglePlay()}

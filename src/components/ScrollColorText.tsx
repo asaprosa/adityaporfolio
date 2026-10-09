@@ -26,8 +26,8 @@ export function ScrollColorText({
   const characters = text.split("");
 
   return (
-    <section ref={containerRef} className="h-[250vh]">
-      <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden px-6 md:px-10">
+    <section ref={containerRef} className="h-[250dvh]">
+      <div className="sticky top-0 flex h-dvh items-center justify-center overflow-hidden px-6 md:px-10">
         <div className={`mx-auto max-w-4xl text-center text-2xl font-medium leading-snug sm:text-3xl md:text-4xl inline [word-break:break-word] [hyphens:manual] ${className}`}>
           {characters.map((char, index) => {
             const start = index / characters.length;

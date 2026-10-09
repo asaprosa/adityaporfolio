@@ -26,7 +26,7 @@ export function About() {
           <TextArrowButton
             as="a"
             href="#contact"
-            className="mt-6 text-sm font-medium text-ink"
+            className="mt-6 min-h-11 text-sm font-medium text-ink"
           >
             Get in touch
           </TextArrowButton>

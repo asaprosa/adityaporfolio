@@ -70,7 +70,7 @@ export function ResumeBuilderForm() {
             id="provider"
             value={provider}
             onChange={(e) => setProvider(e.target.value as ProviderId)}
-            className="mt-2 w-full rounded-control border border-ink/15 bg-paper px-4 py-3 text-sm text-ink outline-none focus:border-ink/50"
+            className="mt-2 w-full rounded-control border border-ink/15 bg-paper px-4 py-3 text-base text-ink outline-none md:text-sm coarse:text-base focus:border-ink/50"
           >
             {PROVIDER_IDS.map((id) => (
               <option key={id} value={id}>
@@ -92,7 +92,7 @@ export function ResumeBuilderForm() {
             required
             autoComplete="off"
             placeholder="Pasted here, used once, never stored on our servers"
-            className="mt-2 w-full rounded-control border border-ink/15 bg-paper px-4 py-3 text-sm text-ink outline-none focus:border-ink/50"
+            className="mt-2 w-full rounded-control border border-ink/15 bg-paper px-4 py-3 text-base text-ink outline-none md:text-sm coarse:text-base focus:border-ink/50"
           />
           <p className="mt-1.5 text-xs text-muted">
             Kept only in this browser tab&apos;s session storage and sent straight through to{" "}
@@ -111,7 +111,7 @@ export function ResumeBuilderForm() {
             required
             rows={10}
             placeholder="Paste your resume as plain text"
-            className="mt-2 w-full resize-y rounded-control border border-ink/15 bg-paper px-4 py-3 text-sm text-ink outline-none focus:border-ink/50"
+            className="mt-2 w-full resize-y rounded-control border border-ink/15 bg-paper px-4 py-3 text-base text-ink outline-none md:text-sm coarse:text-base focus:border-ink/50"
           />
         </div>
 
@@ -126,7 +126,7 @@ export function ResumeBuilderForm() {
             required
             rows={8}
             placeholder="Paste the job description you're targeting"
-            className="mt-2 w-full resize-y rounded-control border border-ink/15 bg-paper px-4 py-3 text-sm text-ink outline-none focus:border-ink/50"
+            className="mt-2 w-full resize-y rounded-control border border-ink/15 bg-paper px-4 py-3 text-base text-ink outline-none md:text-sm coarse:text-base focus:border-ink/50"
           />
         </div>
 

@@ -7,6 +7,9 @@ export type Project = {
   slug: string;
   title: string;
   subtitle: string;
+  year: number; // inferred from when the project was added to this portfolio
+  /** CSS object-position for the narrow collapsed slice of the homepage carousel. Picks the useful part of the cover. */
+  objectPosition?: string;
   description: string;
   tech: string[];
   highlights: string[];
@@ -26,6 +29,8 @@ export const projects: Project[] = [
     slug: "gold-silver-loan-system",
     title: "Gold & Silver Loan Management System",
     subtitle: "Freelance project",
+    year: 2026,
+    objectPosition: "40% 50%",
     description:
       "A staff-facing web app for a pawn-loan (gold/silver) shop, plus a self-service portal for the shop's B2B wholesale customers (Vyaparis), covering the full loan lifecycle: pledge, release, renewal, top-up, and partial repayment, with two fully isolated authentication systems for staff vs. self-service customers.",
     tech: ["Next.js 16", "TypeScript", "React 19", "Prisma", "PostgreSQL", "Tailwind CSS"],
@@ -54,6 +59,8 @@ export const projects: Project[] = [
     slug: "qa-automation-engine",
     title: "Multi-Model AI & Risk-Scored QA Automation Engine",
     subtitle: "Internal QA tooling",
+    year: 2026,
+    objectPosition: "30% 50%",
     description:
       "A risk-prioritization engine and serverless automation suite that cuts pre-test planning overhead by orchestrating multiple LLMs with resilient fallbacks.",
     tech: ["Node.js", "Vercel", "Playwright", "Groq", "Claude", "Gemini"],
@@ -81,6 +88,8 @@ export const projects: Project[] = [
     slug: "ats-resume-tailor",
     title: "ATS Resume Tailor",
     subtitle: "Browser-only resume tailoring app",
+    year: 2026,
+    objectPosition: "90% 50%",
     description:
       "A bring-your-own-key app that tailors a resume to a job description: it extracts what the JD actually requires, scores the resume against it, and generates a keyword-optimized, ATS-friendly LaTeX resume, plus a cover letter, interview prep, and a LinkedIn About. A deterministic verification pass flags any generated metric that isn't traceable back to the source resume.",
     tech: ["React", "Vite", "JavaScript", "Kimi", "Gemini", "Groq", "NVIDIA NIM"],
@@ -113,6 +122,8 @@ export const projects: Project[] = [
     slug: "nihon",
     title: "Nihon: Japanese Study App",
     subtitle: "Personal project",
+    year: 2026,
+    objectPosition: "50% 50%",
     description:
       "A spaced-repetition Japanese study app structured around Minna no Nihongo Shokyu I, with drills, tests, and a recommender that routes practice to the weakest area.",
     tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL"],
@@ -136,6 +147,8 @@ export const projects: Project[] = [
     slug: "ornament-system",
     title: "Ornament System: Jewellery Shop Management Platform",
     subtitle: "Family business project",
+    year: 2026,
+    objectPosition: "10% 50%",
     description:
       "A full-stack inventory, sales and invoicing system built to replace a legacy Visual Basic 6 desktop application for a family-run jewellery shop, including migrating its legacy Access database to PostgreSQL.",
     tech: ["Next.js", "React", "TypeScript", "PostgreSQL", "Prisma", "Tailwind CSS", "NextAuth", "Vitest", "Playwright"],

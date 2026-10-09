@@ -11,6 +11,8 @@ import { RollingText } from "@/components/RollingTextButton";
 import { motion } from "motion/react";
 import { projects } from "@/data/projects";
 import { personal } from "@/data/personal";
+import { CinemaPanels } from "@/components/effects/CinemaEffect";
+import { effects } from "@/config/effects";
 
 const MotionLink = motion.create(Link);
 
@@ -26,16 +28,19 @@ export function Projects() {
           </h2>
           <TextArrowButton
             as="a"
-            href={personal.links.github}
-            target="_blank"
-            rel="noreferrer"
-            className="text-sm font-medium text-ink"
+            href={effects.projectIndex ? "/projects" : personal.links.github}
+            target={effects.projectIndex ? undefined : "_blank"}
+            rel={effects.projectIndex ? undefined : "noreferrer"}
+            className="min-h-11 text-sm font-medium text-ink"
           >
             View all work
           </TextArrowButton>
         </Reveal>
 
-        <div className="mt-14 grid gap-8 sm:grid-cols-2">
+        {effects.cinema && <CinemaPanels />}
+
+        {/* Stacked cards: the whole grid normally (2 columns from 640px). With the cinema panels on, they show only under 768px, as one full-width column of links. */}
+        <div className={`mt-14 grid gap-8 ${effects.cinema ? "md:hidden" : "sm:grid-cols-2"}`}>
           {projects.map((project, i) => {
             const cover = project.images[0];
             return (
@@ -87,14 +92,9 @@ export function Projects() {
                   <p className="mt-3 text-sm leading-relaxed text-muted">{project.description}</p>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {project.tech.map((t) => (
-                      <motion.span
-                        key={t}
-                        initial="initial"
-                        whileHover="hover"
-                        className="rounded-control border border-ink/15 px-2.5 py-1 text-xs text-ink cursor-default"
-                      >
-                        <RollingText text={t} />
-                      </motion.span>
+                      <span key={t} className="rounded-control border border-ink/15 px-2.5 py-1 text-xs text-ink">
+                        {t}
+                      </span>
                     ))}
                   </div>
                 </MotionLink>

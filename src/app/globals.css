@@ -5,6 +5,43 @@
 html {
   scroll-behavior: smooth;
 }
+/* Lenis (smoothScroll effect): hand control of smoothing to Lenis while it is running. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+/* curtain effect: panels armed by an inline <head> script, only for a first visit with motion allowed.
+   With JavaScript off the attribute is never set, so content is never covered. The failsafe uncovers
+   the page if hydration never completes. */
+html[data-curtain]::before,
+html[data-curtain]::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: calc(50% + 1px);
+  z-index: 100;
+  pointer-events: none;
+  background-color: theme("colors.paper");
+  animation: curtain-failsafe 0s linear 4s forwards;
+}
+html[data-curtain]::before {
+  left: 0;
+}
+html[data-curtain]::after {
+  right: 0;
+}
+@keyframes curtain-failsafe {
+  to {
+    visibility: hidden;
+  }
+}
 
 body {
   background-color: theme("colors.paper");
@@ -30,9 +67,14 @@ body {
 
 /* Paper-grain for solid ink surfaces (nav pill, footer, dark cards) — same noise family as the
    page background, blended brighter since it sits against black instead of cream. */
-.grain-surface {
-  position: relative;
-  isolation: isolate;
+/* In the components layer so utilities such as .fixed and .sticky still win. Unlayered, this rule
+   overrode them: the Back to top button was position: relative and sat in the page flow, adding
+   its 48px height as white space under the footer. */
+@layer components {
+  .grain-surface {
+    position: relative;
+    isolation: isolate;
+  }
 }
 .grain-surface::after {
   content: "";
