@@ -6,6 +6,7 @@ import { SpotifyPlayer } from "@/components/SpotifyPlayer";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { SmoothScrollEffect } from "@/components/effects/SmoothScrollEffect";
 import { curtainArmScript } from "@/components/effects/CurtainEffect";
+import { CursorTrailEffect } from "@/components/effects/CursorTrailEffect";
 import { effects } from "@/config/effects";
 import { NoiseOverlay } from "@/components/NoiseOverlay";
 
@@ -58,6 +59,7 @@ export default function RootLayout({
         {effects.smoothScroll ? <SmoothScrollEffect /> : <SmoothScroll />}
         <SpotifyPlayer />
         <NoiseOverlay />
+        {effects.cursorTrail && <CursorTrailEffect />}
       </body>
     </html>
   );
