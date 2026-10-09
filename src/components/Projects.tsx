@@ -39,8 +39,8 @@ export function Projects() {
 
         {effects.cinema && <CinemaPanels />}
 
-        {/* Stacked cards: the whole grid normally, and under 768px when the cinema panels are on. */}
-        <div className={`mt-14 grid gap-8 sm:grid-cols-2 ${effects.cinema ? "md:hidden" : ""}`}>
+        {/* Stacked cards: the whole grid normally (2 columns from 640px). With the cinema panels on, they show only under 768px, as one full-width column of links. */}
+        <div className={`mt-14 grid gap-8 ${effects.cinema ? "md:hidden" : "sm:grid-cols-2"}`}>
           {projects.map((project, i) => {
             const cover = project.images[0];
             return (
