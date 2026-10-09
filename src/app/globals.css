@@ -67,9 +67,14 @@ body {
 
 /* Paper-grain for solid ink surfaces (nav pill, footer, dark cards) — same noise family as the
    page background, blended brighter since it sits against black instead of cream. */
-.grain-surface {
-  position: relative;
-  isolation: isolate;
+/* In the components layer so utilities such as .fixed and .sticky still win. Unlayered, this rule
+   overrode them: the Back to top button was position: relative and sat in the page flow, adding
+   its 48px height as white space under the footer. */
+@layer components {
+  .grain-surface {
+    position: relative;
+    isolation: isolate;
+  }
 }
 .grain-surface::after {
   content: "";
